@@ -73,14 +73,13 @@ Follow the steps below on each server before deploying:
    ```
 
 ## Deploying Computation Party Server instances
-Below steps need to be performed for each of the three servers on which the Computation Party Server runs.
-
+The following steps need to be performed on each of the three servers running a Computation Party Server instance.
 
 ### Steps
 1. Create the configuration file at the repository root:
    - `.env.party`
      ```
-     COORDINATION_SERVER_URL=http://192.168.0.199:8005
+     COORDINATION_SERVER_URL=http://192.168.0.100:8005
      PARTY_API_KEY=81f47c24b9fbe22421ea3ae92a9cc8f6
      PARTY_HOSTS=["192.168.0.100", "192.168.0.101", "192.168.0.102"]
      PARTY_PORTS=[8006, 8007, 8008]
@@ -115,7 +114,7 @@ Below steps need to be performed for each of the three servers on which the Comp
 1. Create the configuration file at the repository root:
    - `.env.consumer_api`
      ```
-     COORDINATION_SERVER_URL=http://192.168.0.199:8005
+     COORDINATION_SERVER_URL=http://192.168.0.100:8005
      CERTS_PATH=certs
      PARTY_HOSTS=["192.168.0.100", "192.168.0.101", "192.168.0.102"]
      PARTY_PORTS=["8006","8007","8008"]
