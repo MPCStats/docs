@@ -15,85 +15,91 @@ Below instructions assume that the servers will be installed on:
 
 Note: You can use domain names such as `coord.example.com` instead of IP addresses.
 
-## Steps
+## Common Environment Configuration
 1. Install `Docker` by following the instructions [here](https://docs.docker.com/engine/install/).
 
-1. Configure and start the `Coordination Server`  
-   1. Change the `PARTY_HOSTS` in `mpc_demo_infra/coordination_server/docker/.env.coord` to:
-      ```bash
-      PARTY_HOSTS=["192.168.0.101", "192.168.0.102", "192.168.0.103"]
-      ```
+1. Clone the `mpc-demo-infra` repository and cd to the repository root:
+   ```bash
+   git clone https://github.com/ZKStats/mpc-demo-infra.git
+   cd mpc-demo-infra
+   ```
 
-   1. If you intend to use HTTPS, also:
-      1. Set `PARTY_WEB_PROTOCOL` to `https`
-      1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `mpc_demo_infra/data_consumer_api/docker/ssl_certs` directory.
+## Deploying the Coordination Server
+Ensure that you are at the repository root before proceeding.
 
+1. Change the `PARTY_HOSTS` in `./mpc_demo_infra/coordination_server/docker/.env.coord` to:
+   ```bash
+   PARTY_HOSTS=["192.168.0.101", "192.168.0.102", "192.168.0.103"]
+   ```
 
-   1. Start the server
-      ```bash
-      cd ./mpc_demo_infra/coordination_server/docker/
-      docker build -t coord .
-      docker run --init -it -v coord-data:/root/mpc-demo-infra/ -p 8005-8100:8005-8100 coord
-      ```
+1. If you intend to use HTTPS, also:
+   1. Set the `PARTY_WEB_PROTOCOL` to `https`
+   1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `mpc_demo_infra/data_consumer_api/docker/ssl_certs` directory.
 
-1. Configure the `Computation Party Server`
-   1. Clone the `MP-SPDZ` repository to any preferred location and cd to the repository root:
-      ```bash
-      git clone git@github.com:ZKStats/MP-SPDZ.git
-      cd MP-SPDZ
-      ```
+1. Start the server
+   ```bash
+   docker build -t coord -f ./mpc_demo_infra/coordination_server/docker/Dockerfile
+   docker run --init -it -v coord-data:/root/mpc-demo-infra/ -p 8005-8100:8005-8100 coord
+   ```
 
-   1. Create `P{0,1,2}.pem` and `P{0,1,2}.key` files
-      ```bash
-      ./Scripts/setup-ssl.sh 3
-      ```
+## Deploying the Computation Party Servers
+Perform the following steps on each of the three servers running a Computation Party Server instance.
+Ensure that you are at the repository root before proceeding.
+ 
+1. Change the `PARTY_HOSTS` in `./mpc_demo_infra/computation_party_server/docker/.env.party` to:
+   ```bash
+   PARTY_HOSTS=["192.168.0.101", "192.168.0.102", "192.168.0.103"]
+   ```
 
-   1. Copy the created pem and key files to `<mpc-demo-infra repository root>/mpc_demo_infra/computation_party_server/docker/` directory:
-      ```bash
-      cp Player-Data/P*.{pem,key} <mpc-demo-infra repository root>/mpc_demo_infra/computation_party_server/docker/
-      ```
-   1. If you intend to use HTTPS, also:
-      1. Set `PARTY_WEB_PROTOCOL` to `https`
-      1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `mpc_demo_infra/computation_party_server/docker/ssl_certs` directory.
+1. If you intend to use HTTPS, also:
+   1. Set `PARTY_WEB_PROTOCOL` to `https`
+   1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `mpc_demo_infra/computation_party_server/docker/ssl_certs` directory.
 
-   1. Change the `PARTY_HOSTS` in `mpc_demo_infra/coordination_server/docker/.env.coord` to:
-      ```bash
-      PARTY_HOSTS=["192.168.0.101", "192.168.0.102", "192.168.0.103"]
-      ```
    
-   1. Change the `COORDINATION_SERVER_URL` to:
-      ```
-      COORDINATION_SERVER_URL=http://192.168.0.100:8005
-      ```
+1. Change the `COORDINATION_SERVER_URL` to:
+   ```
+   COORDINATION_SERVER_URL=http://192.168.0.100:8005
+   ```
+1. Run the following commands to start a server instance. Replace %PARTY_ID% with the party ID assigned to the server (0, 1, or 2). Also, replace %PORT% with 8005, 8006 and 8007 for Party 0, Party 1 and Party 2, respectively.
 
-1. Start three `Computatoin Party Server` instances
-   1. cd to the Docker directory:
-      ```bash
-      cd mpc-demo-infra/mpc_demo_infra/computation_party_server/docker
-      ```
+   ```bash
+   cd <mpc-demp-infra repository root>
+   export PORT=%PORT%
+   export PARTY_ID=%PARTY_ID%
+   export NUM_PARTIES=3
+   docker build --build-arg PORT=${PORT} --build-arg PARTY_ID=${PARTY_ID} --build-arg NUM_PARTIES=${NUM_PARTIES} -t party -f ./mpc_demo_infra/computation_party_server/docker/Dockerfile
+   docker run --init -it -v party-data:/root/MP-SPDZ/ -p 8000-8100:8000-8100 -e PARTY_ID=${PARTY_ID} party
+   ```
 
-   1. Run the following commands three times to start three server instances, replacing %PORT% and %PARTY_ID%. Use ports 8005, 8006, and 8007 for Party 0, Party 1, and Party 2, respectively.
-      ```bash
-      export PORT=%PORT%
-      export PARTY_ID=%PARTY_ID%
-      export NUM_PARTIES=3
-      docker build --build-arg PORT=${PORT} --build-arg PARTY_ID=${PARTY_ID} --build-arg NUM_PARTIES=${NUM_PARTIES} -t party .
-      docker run --init -it -v party-data:/root/MP-SPDZ/ -p 8000-8100:8000-8100 -e PARTY_ID=${PARTY_ID} party
-      ```
+## Deploying the Data Consumer API Servers
+Ensure that you are at the repository root before proceeding.
 
-1. Configure and start the `Data Consumer API Server`
-   1. Change the `PARTY_HOSTS` in `mpc_demo_infra/coordination_server/docker/.env.coord` to:
-      ```bash
-      PARTY_HOSTS=["192.168.0.101", "192.168.0.102", "192.168.0.103"]
-      ```
+1. Change the `PARTY_HOSTS` in `mpc_demo_infra/coordination_server/docker/.env.coord` to:
+   ```bash
+   PARTY_HOSTS=["192.168.0.101", "192.168.0.102", "192.168.0.103"]
+   ```
 
-   1. If you intend to use HTTPS, also:
-      1. Set `PARTY_WEB_PROTOCOL` to `https`
-      1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `mpc_demo_infra/data_consumer_api/docker/ssl_certs` directory.
+1. If you intend to use HTTPS, also:
+   1. Set `PARTY_WEB_PROTOCOL` to `https`
+   1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `mpc_demo_infra/data_consumer_api/docker/ssl_certs` directory.
 
-   1. Start the server
-      ```bash
-      cd ./mpc_demo_infra/data_consumer_api/docker/
-      docker build -t data_consumer_api .
-      docker run --init -it -p 8004:8004 data_consumer_api
-      ```
+1. Start the server
+   ```bash
+   cd <mpc-demp-infra repository root>
+   docker build -t data_consumer_api -f ./mpc_demo_infra/data_consumer_api/docker/Dockerfile
+   docker run --init -it -p 8004:8004 data_consumer_api
+   ```
+
+## Deploying the Notary Server
+Ensure that you are at the repository root before proceeding.
+
+1. If you intend to run the Notary Server for your domain, replace `notary.key` and `notary.crt` in the `./mpc_demo_infra/notary_server/docker/ssl_certs` directory with your domain's private key and certificate files respectively.
+
+1. Start the server
+Replace %NOTARY_IP% with the IP address of the server on which the Notary server runs:
+
+```bash
+docker build --build-arg NOTARY_IP=%NOTARY_IP% -t notary -f ./mpc_demo_infra/notary_server/docker/Dockerfile
+docker run --init -it -p 8003:8003 notary
+```
+
