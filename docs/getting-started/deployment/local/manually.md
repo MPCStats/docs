@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Manual Deployment
 
-## Procedure
+## Steps
 1. Install Poetry by following the instructions [here](https://python-poetry.org/docs/#installation).
 
 2. Clone the repository and cd to the repository root:
@@ -15,11 +15,14 @@ sidebar_position: 2
    ```
 
 3. Install the dependencies:
+
    Ubuntu:
    ```bash
    ./setup_env.sh --setup-mpspdz
    ```
+
    Other environments:
+
    (TO BE ADDED)
 
 4. Create the following configuration files at the repository root:
@@ -55,28 +58,28 @@ sidebar_position: 2
      PORT=8004
      ```
 
-5. Start the Coordination Server
+5. Start the `Coordination Server`
    ```bash
    poetry run coord-run
    ```
 
-6. Start the Computation Party Servers
-   1. Open a new terminal, start party-0:
+6. Start three `Computation Party Server` instances
+   1. Open a new terminal and start the `party-0` server:
    ```bash
    PORT=8006 PARTY_ID=0 poetry run party-run
    ```
 
-   2. Open a new terminal and run party-1:
+   2. Open a new terminal and start the `party-1` server:
    ```bash
    PORT=8007 PARTY_ID=1 poetry run party-run
    ```
 
-   3. Open a new terminal and run party-2:
+   3. Open a new terminal and start the `party-2` server:
    ```bash
    PORT=8008 PARTY_ID=2 poetry run party-run
    ```
 
-7. Start the Data Consumer API Server
+7. Start the `Data Consumer API Server`
    ```bash
    poetry run consumet-api-run
    ```
