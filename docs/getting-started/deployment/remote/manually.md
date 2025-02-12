@@ -73,6 +73,9 @@ Follow the steps below on each server before deploying:
    ```
 
 ## Deploying Computation Party Server instances
+Below steps need to be performed for each of the three servers on which the Computation Party Server runs.
+
+
 ### Steps
 1. Create the configuration file at the repository root:
    - `.env.party`
@@ -100,20 +103,11 @@ Follow the steps below on each server before deploying:
 
    1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `mpc_demo_infra/ssl_certs` directory.
 
-1. Start three `Computation Party Server` instances
-   1. Open a new terminal and start the `party-0` server:
+1. Start the `Computation Party Server`
+   In the command below, replace `PARTY_ID` with the party ID assigned to the server (0, 1, or 2) and replace `PORT` with 8006, 8007, or 8008 for Party 0, Party 1, and Party 2, respectively.
+
    ```bash
    PORT=8006 PARTY_ID=0 poetry run party-run
-   ```
-
-   2. Open a new terminal and start the `party-1` server:
-   ```bash
-   PORT=8007 PARTY_ID=1 poetry run party-run
-   ```
-
-   3. Open a new terminal and start the `party-2` server:
-   ```bash
-   PORT=8008 PARTY_ID=2 poetry run party-run
    ```
 
 ## Deploying the Data Consumer API Server
