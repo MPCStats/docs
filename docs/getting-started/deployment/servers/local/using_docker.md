@@ -15,12 +15,3 @@ sidebar_position: 1
    docker-compose up --build
    ```
 
-## Troubleshooting
-If you encounter any issues, try running the following commands to clean up your Docker environment:
-
-```bash
-docker system prune -a --volumes
-docker rm -f $(docker ps -aq)
-docker volume prune -a -f
-docker image prune -f
-```

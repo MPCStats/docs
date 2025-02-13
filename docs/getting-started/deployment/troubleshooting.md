@@ -14,6 +14,13 @@ If you encounter issues:
   - you've added `MOD = -DGFP_MOD_SZ=5` to `CONFIG.mine`.
   - you've generated certificates for computation parties. If not, run `Scripts/setup-ssl.sh` under `../MP-SPDZ`.
   - you've rebuilt the VM. If not, run `make replicated-ring-party.x` under `../MP-SPDZ`.
+5. If you run into Docker-related issues, try these commands to clean up your environment:
+   ```bash
+   docker system prune -a --volumes
+   docker rm -f $(docker ps -aq)
+   docker volume prune -a -f
+   docker image prune -f
+   ```
 
 ## Getting Help
 If you encounter any issues during installation, feel free to open an issue in our [GitHub repository](https://github.com/ZKStats/mpc-demo-infra).
