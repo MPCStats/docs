@@ -141,7 +141,3 @@ You can retrieve statistical metrics such as mean, median, max, min, and Gini co
 ```bash
 poetry run client-query
 ```
-
-## Troubleshooting and Support
-If you encounter any issues during installation, feel free to open an issue in our [GitHub repository](https://github.com/ZKStats/mpc-demo-infra).
-
