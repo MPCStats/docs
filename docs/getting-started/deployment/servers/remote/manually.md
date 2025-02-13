@@ -56,7 +56,7 @@ Ensure that you are at the repository root before proceeding.
 
 1. Install `binance_verifier`
    ```bash
-   cp -R tlsn ../
+   ln -s tlsn ..
    pushd ../tlsn/tlsn
    cargo build --release --example binance_verifier
    popd
@@ -105,7 +105,7 @@ Ensure that you are at the repository root before proceeding.
 
 1. Install `binance_verifier`
    ```bash
-   cp -R tlsn ../
+   ln -s tlsn ..
    pushd ../tlsn/tlsn
    cargo build --release --example binance_verifier
    popd
@@ -113,7 +113,7 @@ Ensure that you are at the repository root before proceeding.
 
 1. Setup MP-SPDZ
    ```bash
-   cp -R MP-SPDZ ../
+   ln -s MP-SPDZ ..
    pushd ../MP-SPDZ
    cp ../mpc-demo-infra/mpc_demo_infra/computation_party_server/docker/CONFIG.mine .
    ./Scripts/setup-ssl.sh 3
@@ -197,7 +197,7 @@ Ensure that you are at the repository root before proceeding.
 
 1. Install the `Notary Server``
    ```bash
-   cp -R tlsn ../
+   ln -s tlsn ..
    pushd ../tlsn/notary/server 
    cargo build --release
    cp -R fixture ../target/release
