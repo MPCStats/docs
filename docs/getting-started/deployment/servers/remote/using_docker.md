@@ -103,12 +103,3 @@ docker build --build-arg NOTARY_IP=%NOTARY_IP% -t notary -f ./mpc_demo_infra/not
 docker run --init -it -p 8003:8003 notary
 ```
 
-## Troubleshooting
-If you encounter any issues, try running the following commands to clean up your Docker environment:
-
-```bash
-docker system prune -a --volumes
-docker rm -f $(docker ps -aq)
-docker volume prune -a -f
-docker image prune -f
-```
