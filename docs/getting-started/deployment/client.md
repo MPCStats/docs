@@ -103,7 +103,7 @@ This method involves building the client entirely from the source code, offering
    ```
 
 ## Configuration
-1. Create a `.env.client_cli` file at the repository root with the following contents
+1. Create a `.env.client_cli` file at the repository root with the following contents:
    ```
    COORDINATION_SERVER_URL=http://192.168.0.100:8005
    PARTY_HOSTS=["192.168.0.101","192.168.0.102","192.168.0.103"]
