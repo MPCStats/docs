@@ -71,7 +71,7 @@ Ensure that you are at the repository root before proceeding.
    docker run --init -it -v party-data:/root/MP-SPDZ/ -p 8000-8100:8000-8100 -e PARTY_ID=${PARTY_ID} party
    ```
 
-## Deploying the Data Consumer API Servers
+## Deploying the Data Consumer API Server
 Ensure that you are at the repository root before proceeding.
 
 1. Change the `PARTY_HOSTS` in `mpc_demo_infra/coordination_server/docker/.env.coord` to:
@@ -103,3 +103,12 @@ docker build --build-arg NOTARY_IP=%NOTARY_IP% -t notary -f ./mpc_demo_infra/not
 docker run --init -it -p 8003:8003 notary
 ```
 
+## Troubleshooting
+If you encounter any issues, try running the following commands to clean up your Docker environment:
+
+```bash
+docker system prune -a --volumes
+docker rm -f $(docker ps -aq)
+docker volume prune -a -f
+docker image prune -f
+```
