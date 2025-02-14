@@ -58,7 +58,7 @@ Follow the steps below on each server before deploying:
    1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `mpc_demo_infra/ssl_certs` directory.
 
 1. Start the server
-   Ensure that you are at the repository root before proceeding.
+   Make sure that you are at the repository root before proceeding.
 
    ```bash
    poetry run coord-run
@@ -94,7 +94,7 @@ Perform the following steps on each of the three servers running a Computation P
    1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `mpc_demo_infra/ssl_certs` directory.
 
 1. Start the `Computation Party Server`
-   Ensure that you are at the repository root before proceeding.
+   Make sure that you are at the repository root before proceeding.
 
    In the command below, replace `%PARTY_ID%` with the party ID assigned to the server (0, 1, or 2) and replace `%PORT%` with 8006, 8007, or 8008 for Party 0, Party 1, and Party 2, respectively.
 
@@ -129,14 +129,14 @@ Perform the following steps on each of the three servers running a Computation P
    1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `mpc_demo_infra/ssl_certs` directory.
 
 1. Start the server
-   Ensure that you are at the repository root before proceeding.
+   Make sure that you are at the repository root before proceeding.
 
    ```bash
    poetry run consumet-api-run
    ```
 
 ## Deploying the Notary Server
-Ensure that you are at the repository root before proceeding.
+Make sure that you are at the repository root before proceeding.
 
 1. Generate self-signed certificate
    Replace `%NOTARY_IP%` below with the IP address of the server on which the Notary Server runs.

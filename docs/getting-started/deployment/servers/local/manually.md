@@ -57,42 +57,44 @@ sidebar_position: 2
 
 1. Start the `Coordination Server`
 
-   Ensure that you are at the repository root before proceeding.
+   Make sure you are in the repository root before proceeding.  
+   You can skip `source venv/bin/activate` if Poetry is already installed.
 
    ```bash
-   source venv/bin/activate
+   source venv/bin/activate # may not be necessary
    poetry run coord-run
    ```
 
 1. Start three `Computation Party Server` instances
 
-   In each step, ensure that you are at the repository root before proceeding.
+   In each step, make sure that you are at the repository root before proceeding.
+   You can skip `source venv/bin/activate` if Poetry is already installed.
 
    1. Open a new terminal and start the `party-0` server:
    ```bash
-   source venv/bin/activate
+   source venv/bin/activate # may not be necessary
    PORT=8006 PARTY_ID=0 poetry run party-run
    ```
 
    2. Open a new terminal and start the `party-1` server:
    ```bash
-   source venv/bin/activate
+   source venv/bin/activate # may not be necessary
    PORT=8007 PARTY_ID=1 poetry run party-run
    ```
 
    3. Open a new terminal and start the `party-2` server:
    ```bash
-   source venv/bin/activate
+   source venv/bin/activate # may not be necessary
    PORT=8008 PARTY_ID=2 poetry run party-run
    ```
 
 1. Start the `Data Consumer API Server`
 
-   Ensure that you are at the repository root before proceeding.
+   Make sure that you are at the repository root before proceeding.
 
    ```bash
-   source venv/bin/activate
-   poetry run consumet-api-run
+   source venv/bin/activate # may not be necessary
+   poetry run consumer-api-run
    ```
 
 1. Start the `Notary Server`
