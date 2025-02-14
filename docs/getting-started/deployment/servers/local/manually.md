@@ -14,15 +14,10 @@ sidebar_position: 2
    cd mpc-demo-infra
    ```
 
-1. Install non-Python dependencies:
+1. Set up the environment and install dependencies:
 
    ```bash
-   ./setup_env.sh --setup-mpspdz
-   ```
-
-1. Install Python dependencies
-   ```bash
-   poetry install
+   ./setup_env.sh --setup-local
    ```
 
 1. Create the following configuration files at the repository root:
@@ -84,5 +79,10 @@ sidebar_position: 2
 1. Start the `Data Consumer API Server`
    ```bash
    poetry run consumet-api-run
+   ```
+
+1. Start the `Notary Server`
+   ```bash
+   ../tlsn/notary/target/release/notary-server
    ```
 
