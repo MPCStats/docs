@@ -55,6 +55,11 @@ sidebar_position: 2
      PORT=8004
      ```
 
+1. Activate the virtual environment:
+   ```bash
+   source venv/bin/activate
+   ```
+
 1. Start the `Coordination Server`
    ```bash
    poetry run coord-run
