@@ -38,7 +38,7 @@ Follow the steps below on each server before deploying:
 
    1. Install other dependencies:
       ```bash
-      ./setup_env.sh --setup-mpspdz
+      ./setup_env.sh
       ```
 
 1. Install Python dependencies
