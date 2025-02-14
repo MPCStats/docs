@@ -56,6 +56,7 @@ sidebar_position: 2
      ```
 
 1. Start the `Coordination Server`
+
    Ensure that you are at the repository root before proceeding.
 
    ```bash
@@ -64,7 +65,8 @@ sidebar_position: 2
    ```
 
 1. Start three `Computation Party Server` instances
-   Ensure that you are at the repository root before proceeding.
+
+   In each step, ensure that you are at the repository root before proceeding.
 
    1. Open a new terminal and start the `party-0` server:
    ```bash
@@ -85,6 +87,9 @@ sidebar_position: 2
    ```
 
 1. Start the `Data Consumer API Server`
+
+   Ensure that you are at the repository root before proceeding.
+
    ```bash
    source venv/bin/activate
    poetry run consumet-api-run
