@@ -55,39 +55,44 @@ sidebar_position: 2
      PORT=8004
      ```
 
-1. Activate the virtual environment:
+1. Start the `Coordination Server`
+   Ensure that you are at the repository root before proceeding.
+
    ```bash
    source venv/bin/activate
-   ```
-
-1. Start the `Coordination Server`
-   ```bash
    poetry run coord-run
    ```
 
 1. Start three `Computation Party Server` instances
+   Ensure that you are at the repository root before proceeding.
+
    1. Open a new terminal and start the `party-0` server:
    ```bash
+   source venv/bin/activate
    PORT=8006 PARTY_ID=0 poetry run party-run
    ```
 
    2. Open a new terminal and start the `party-1` server:
    ```bash
+   source venv/bin/activate
    PORT=8007 PARTY_ID=1 poetry run party-run
    ```
 
    3. Open a new terminal and start the `party-2` server:
    ```bash
+   source venv/bin/activate
    PORT=8008 PARTY_ID=2 poetry run party-run
    ```
 
 1. Start the `Data Consumer API Server`
    ```bash
+   source venv/bin/activate
    poetry run consumet-api-run
    ```
 
 1. Start the `Notary Server`
    ```bash
-   ../tlsn/notary/target/release/notary-server
+   cd ../tlsn/notary/target/release
+   ./notary-server
    ```
 
