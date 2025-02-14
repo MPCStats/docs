@@ -24,44 +24,12 @@ Follow the steps below on each server before deploying:
    cd mpc-demo-infra
    ```
 
-1. Install non-Python dependencies
-   1. Install `openssl`
-      - `Ubuntu`:
-         ```bash
-         sudo apt install -y openssl
-         ```
-
-      - `macOS`:
-         ```bash
-         brew install openssl
-         ```
-
-   1. Install other dependencies:
-      ```bash
-      ./setup_env.sh
-      ```
-
-1. Install Python dependencies
-   ```bash
-   poetry install
-   ```
+1. Set up the environment:
+  ```bash
+  ./setup_env.sh
+  ```
 
 ## Deploying the Coordination Server
-Ensure that you are at the repository root before proceeding.
-
-1. Install Rust
-   ```bash
-   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-   ```
-
-1. Install `binance_verifier`
-   ```bash
-   ln -s tlsn ..
-   pushd ../tlsn/tlsn
-   cargo build --release --example binance_verifier
-   popd
-   ```
-
 1. Create the configuration file at the repository root:
    - `.env.coord`
      ```
@@ -90,36 +58,14 @@ Ensure that you are at the repository root before proceeding.
    1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `mpc_demo_infra/ssl_certs` directory.
 
 1. Start the server
+   Ensure that you are at the repository root before proceeding.
+
    ```bash
    poetry run coord-run
    ```
 
 ## Deploying Computation Party Server instances
 Perform the following steps on each of the three servers running a Computation Party Server instance.
-Ensure that you are at the repository root before proceeding.
-
-1. Install Rust
-   ```bash
-   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-   ```
-
-1. Install `binance_verifier`
-   ```bash
-   ln -s tlsn ..
-   pushd ../tlsn/tlsn
-   cargo build --release --example binance_verifier
-   popd
-   ```
-
-1. Setup MP-SPDZ
-   ```bash
-   ln -s MP-SPDZ ..
-   pushd ../MP-SPDZ
-   cp ../mpc-demo-infra/mpc_demo_infra/computation_party_server/docker/CONFIG.mine .
-   ./Scripts/setup-ssl.sh 3
-   make -j$(nproc) malicious-rep-ring-party.x
-   popd
-   ```
 
 1. Create the configuration file at the repository root:
    - `.env.party`
@@ -148,6 +94,8 @@ Ensure that you are at the repository root before proceeding.
    1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `mpc_demo_infra/ssl_certs` directory.
 
 1. Start the `Computation Party Server`
+   Ensure that you are at the repository root before proceeding.
+
    In the command below, replace `%PARTY_ID%` with the party ID assigned to the server (0, 1, or 2) and replace `%PORT%` with 8006, 8007, or 8008 for Party 0, Party 1, and Party 2, respectively.
 
    ```bash
@@ -155,8 +103,6 @@ Ensure that you are at the repository root before proceeding.
    ```
 
 ## Deploying the Data Consumer API Server
-Ensure that you are at the repository root before proceeding.
-
 1. Create the configuration file at the repository root:
    - `.env.consumer_api`
      ```
@@ -183,26 +129,14 @@ Ensure that you are at the repository root before proceeding.
    1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `mpc_demo_infra/ssl_certs` directory.
 
 1. Start the server
+   Ensure that you are at the repository root before proceeding.
+
    ```bash
    poetry run consumet-api-run
    ```
 
 ## Deploying the Notary Server
 Ensure that you are at the repository root before proceeding.
-
-1. Install Rust
-   ```bash
-   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-   ```
-
-1. Install the `Notary Server``
-   ```bash
-   ln -s tlsn ..
-   pushd ../tlsn/notary/server 
-   cargo build --release
-   cp -R fixture ../target/release
-   popd
-   ```
 
 1. Generate self-signed certificate
    Replace `%NOTARY_IP%` below with the IP address of the server on which the Notary Server runs.
