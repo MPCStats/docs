@@ -70,7 +70,7 @@ This method involves building the client entirely from the source code, offering
 
 3. Install Binance Prover
 
-   Ensure that you are at the repository root before proceeding.
+   Make sure you are in the repository root before proceeding.  
    ```
    cd tlsn/tlsn
    cargo build --release --example binance_prover
@@ -98,7 +98,7 @@ This method involves building the client entirely from the source code, offering
 
 6. Install the MPC demo infrastructure
 
-   Ensure that you are at the repository root before proceeding.
+   Make sure that you are at the repository root before proceeding.
    ```
    poetry install
    ```

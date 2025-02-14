@@ -25,7 +25,7 @@ Note: You can use domain names such as `coord.example.com` instead of IP address
    ```
 
 ## Deploying the Coordination Server
-Ensure that you are at the repository root before proceeding.
+Make sure that you are at the repository root before proceeding.
 
 1. Change the `PARTY_HOSTS` in `./mpc_demo_infra/coordination_server/docker/.env.coord` to:
    ```bash
@@ -44,7 +44,7 @@ Ensure that you are at the repository root before proceeding.
 
 ## Deploying the Computation Party Servers
 Perform the following steps on each of the three servers running a Computation Party Server instance.
-Ensure that you are at the repository root before proceeding.
+Make sure that you are at the repository root before proceeding.
  
 1. Change the `PARTY_HOSTS` in `./mpc_demo_infra/computation_party_server/docker/.env.party` to:
    ```bash
@@ -72,7 +72,7 @@ Ensure that you are at the repository root before proceeding.
    ```
 
 ## Deploying the Data Consumer API Server
-Ensure that you are at the repository root before proceeding.
+Make sure that you are at the repository root before proceeding.
 
 1. Change the `PARTY_HOSTS` in `mpc_demo_infra/coordination_server/docker/.env.coord` to:
    ```bash
@@ -91,7 +91,7 @@ Ensure that you are at the repository root before proceeding.
    ```
 
 ## Deploying the Notary Server
-Ensure that you are at the repository root before proceeding.
+Make sure that you are at the repository root before proceeding.
 
 1. If you intend to run the Notary Server for your domain, replace `notary.key` and `notary.crt` in the `./mpc_demo_infra/notary_server/docker/ssl_certs` directory with your domain's private key and certificate files respectively.
 
