@@ -14,10 +14,10 @@ sidebar_position: 2
    cd mpc-demo-infra
    ```
 
-1. Set up the environment and install dependencies:
+1. Set up the environment:
 
    ```bash
-   ./setup_env.sh --setup-local
+   ./setup_env.sh
    ```
 
 1. Create the following configuration files at the repository root:
