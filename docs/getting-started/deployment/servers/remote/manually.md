@@ -21,13 +21,7 @@ Follow the steps below on each server before deploying:
 1. Clone the `mpc-demo-infra` repository and cd to the repository root:
    ```bash
    git clone https://github.com/ZKStats/mpc-demo-infra.git
-   cd mpc-demo-infra
    ```
-
-1. Set up the environment:
-  ```bash
-  ./setup_env.sh
-  ```
 
 ## Deploying the Coordination Server
 1. Create the configuration file at the repository root:
@@ -56,6 +50,11 @@ Follow the steps below on each server before deploying:
 
       ```
    1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `mpc_demo_infra/ssl_certs` directory.
+
+1. Set up the environment:
+  ```bash
+  ./setup_env.sh --coord
+  ```
 
 1. Start the server
    Make sure that you are at the repository root before proceeding.
@@ -93,6 +92,11 @@ Perform the following steps on each of the three servers running a Computation P
 
    1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `mpc_demo_infra/ssl_certs` directory.
 
+1. Set up the environment:
+  ```bash
+  ./setup_env.sh --party
+  ```
+
 1. Start the `Computation Party Server`
    Make sure that you are at the repository root before proceeding.
 
@@ -128,6 +132,11 @@ Perform the following steps on each of the three servers running a Computation P
 
    1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `mpc_demo_infra/ssl_certs` directory.
 
+1. Set up the environment:
+  ```bash
+  ./setup_env.sh --consumer
+  ```
+
 1. Start the server
    Make sure that you are at the repository root before proceeding.
 
@@ -137,6 +146,11 @@ Perform the following steps on each of the three servers running a Computation P
 
 ## Deploying the Notary Server
 Make sure that you are at the repository root before proceeding.
+
+1. Set up the environment:
+  ```bash
+  ./setup_env.sh --notary
+  ```
 
 1. Generate self-signed certificate
    Replace `%NOTARY_IP%` below with the IP address of the server on which the Notary Server runs.
