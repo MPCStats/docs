@@ -24,7 +24,7 @@ Follow the steps below on each server before deploying:
    ```
 
 ## `setup_env.sh` Options
-The `setup_env.sh` script can take multiple options to set up the environment for running multiple servers. For example, if you intend to run `Coordination Server`, `Data Compumer API Server` and `Notary Server` on one server, you can execute the following:
+The `setup_env.sh` script can take multiple options to set up an environment for running multiple servers. For example, if you intend to run `Coordination Server`, `Data Compumer API Server` and `Notary Server` on one server, you can execute the following:
 ```
 ./setup_env.sh --coord --consumer --notary
 ```
