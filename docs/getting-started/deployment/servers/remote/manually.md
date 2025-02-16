@@ -23,6 +23,20 @@ Follow the steps below on each server before deploying:
    git clone https://github.com/ZKStats/mpc-demo-infra.git
    ```
 
+## `setup_env.sh` Options
+The `setup_env.sh` script can take multiple options to set up the environment for running multiple servers. For example, if you intend to run `Coordination Server`, `Data Compumer API Server` and `Notary Server` on one server, you can execute the following:
+```
+./setup_env.sh --coord --consumer --notary
+```
+
+instead of executing:
+
+```
+./setup_env.sh --coord
+./setup_env.sh --consumer
+./setup_env.sh --notary
+```
+
 ## Deploying the Coordination Server
 1. Create the configuration file at the repository root:
    - `.env.coord`
