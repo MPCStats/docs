@@ -24,7 +24,7 @@ sidebar_position: 2
    - `.env.coord`
      ```
      PORT=8005
-     PARTY_HOSTS=["localhost", "localhost", "localhost"]
+     PARTY_HOSTS=["127.0.0.1", "127.0.0.1", "127.0.0.1"]
      PARTY_PORTS=[8006, 8007, 8008]
      PARTY_API_KEY=81f47c24b9fbe22421ea3ae92a9cc8f6
      PARTY_WEB_PROTOCOL=http
@@ -36,9 +36,9 @@ sidebar_position: 2
 
    - `.env.party`
      ```
-     COORDINATION_SERVER_URL=http://localhost:8005
+     COORDINATION_SERVER_URL=http://127.0.0.1:8005
      PARTY_API_KEY=81f47c24b9fbe22421ea3ae92a9cc8f6
-     PARTY_HOSTS=["localhost", "localhost", "localhost"]
+     PARTY_HOSTS=["127.0.0.1", "127.0.0.1", "127.0.0.1"]
      PARTY_PORTS=[8006, 8007, 8008]
      PARTY_WEB_PROTOCOL=http
      MAX_DATA_PROVIDERS=1000
@@ -47,9 +47,9 @@ sidebar_position: 2
 
    - `.env.consumer_api`
      ```
-     COORDINATION_SERVER_URL=http://localhost:8005
+     COORDINATION_SERVER_URL=http://127.0.0.1:8005
      CERTS_PATH=certs
-     PARTY_HOSTS=["localhost", "localhost", "localhost"]
+     PARTY_HOSTS=["127.0.0.1", "127.0.0.1", "127.0.0.1"]
      PARTY_PORTS=["8006","8007","8008"]
      PARTY_WEB_PROTOCOL=http
      PORT=8004

@@ -11,7 +11,7 @@ sidebar_position: 1
 
 1. Build and start all servers with:
    ```bash
-   ./configure.py
+   ./config-docker-compose.py
    docker-compose up --build
    ```
 

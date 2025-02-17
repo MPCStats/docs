@@ -53,6 +53,8 @@ This method involves building the client entirely from the source code, offering
    ```
 
 ### 2. Using Pre-Built Binary
+*Note that this installation works only when using HTTPS with a registered domain.*
+
 This method relies on trusting pre-compiled binary. It is the least secure but the simplest and fastest way to install the client.
 
 - Bandwidth requirement: Low
@@ -126,6 +128,7 @@ Note: The Dockerfile used for building the client is included in this repository
 
    - Using Pre-Built Binary
      ```bash
+     curl -L -o share-data.sh https://github.com/ZKStats/mpc-demo-infra/releases/latest/download/share-data.sh
      chmod +x share-data.sh
      ./share-data.sh <eth-address> <binance-api-key> <binance-api-secret>
      ```
