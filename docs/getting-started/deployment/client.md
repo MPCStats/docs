@@ -31,7 +31,7 @@ NOTARY_SERVER_HOST=127.0.0.1
 - If using multiple servers, update both COORDINATION_SERVER_URL and PARTY_HOSTS with the appropriate IP addresses.
 
 ## Installation
-There are three ways to install the client CLI:
+There are two ways to install the client CLI:
 
 ### 1. From Source Code
 This method involves building the client entirely from the source code, offering the most security through full transparency and control.
@@ -53,7 +53,7 @@ This method involves building the client entirely from the source code, offering
    ```
 
 ### 2. Using Pre-Built Binary
-*Note that pre-built binary works only with a registered domain.*
+*(pre-built binary works only with a registered domain)*
 
 This method relies on trusting pre-compiled binary. It is the least secure but the simplest and fastest way to install the client.
 
@@ -61,36 +61,11 @@ This method relies on trusting pre-compiled binary. It is the least secure but t
 - Downloads a shell script and two binaries (less than 50MB).
 
 Note: The binaries are built directly from the source code using public GitHub workflows, defined and available in this repository. This ensures participants can verify the process and confirm binary integrity.
+
 #### Steps
 1. Download the script to fetch and execute appropriate binary
    ```
    curl -L -o share-data.sh https://github.com/ZKStats/mpc-demo-infra/releases/latest/download/share-data.sh
-   ```
-1. Follow the instructions in Client CLI Configuration to create an appropriate `.env.client_cli` file in the current directory.
-
-### 3. Using Docker
-This method builds the client in an isolated environment using publicly available images, providing moderate security.
-
-- Bandwidth requirement: Very High
-- Downloads dependent Docker images (more than 6GB) and Docker itself if not already installed.
-
-Note: The Dockerfile used for building the client is included in this repository, ensuring transparency.
-
-#### Steps
-1. Install `Docker` by following the instructions [here](https://docs.docker.com/engine/install/).
-
-1. Clone the repository and cd to the repository root:
-   ```bash
-   git clone https://github.com/ZKStats/mpc-demo-infra.git
-   cd mpc-demo-infra
-   ```
-
-1. Follow the instructions in Client CLI Configuration to create a `.env.client_cli` in `./mpc_demo_infra/client_cli/docker/` directory
-
-1. Build Docker image
-   ```
-   cd mpc-demo-infra/mpc_demo_infra/client_cli/docker
-   ./build.sh
    ```
 
 ## Execution
@@ -102,7 +77,7 @@ Note: The Dockerfile used for building the client is included in this repository
 
 1. Execute `Client CLI`:
 
-   - Using Source Code
+   - Built from the source code
 
      Make sure that you are at the repository root before proceeding.
 
@@ -116,31 +91,25 @@ Note: The Dockerfile used for building the client is included in this repository
              ```bash
              docker cp $CONTAINER:/root/tlsn/notary/target/release/fixture/tls/notary.crt .
              ```
+          poetry run client-share-data <eth-address> <binance-api-key> <binance-api-secret>  --notary-crt-path $(pwd)/notary.crt
+          ``` 
+     - Multi-Server Configuration
        1. Follow the instructions in Client CLI Configuration to create a `.env.client_cli` in the repository root directory
 
        1. Execute `Client CLI`:
           ```bash
-          poetry run client-share-data <eth-address> <binance-api-key> <binance-api-secret>  --notary-crt-path $(pwd)/notary.crt
-          ``` 
-     - Multi-Server Configuration
-       ```bash
-       poetry run client-share-data <eth-address> <binance-api-key> <binance-api-secret>
-       ```
+          poetry run client-share-data <eth-address> <binance-api-key> <binance-api-secret>
+          ```
 
-   - Using Pre-Built Binary
-     ```bash
-     curl -L -o share-data.sh https://github.com/ZKStats/mpc-demo-infra/releases/latest/download/share-data.sh
-     chmod +x share-data.sh
-     ./share-data.sh <eth-address> <binance-api-key> <binance-api-secret>
-     ```
+   - With `share-data.sh` that makes use of pre-built binary
+     1. Follow the instructions in Client CLI Configuration to create an appropriate `.env.client_cli` file in the current directory.
 
-   - Using Docker
-     Make sure that you are at the repository root before proceeding.
-
-     ```bash
-     cd ./mpc_demo_infra/client_cli/docker/
-     ./share-data.sh <eth-address> <binance-api-key> <binance-api-secret>
-     ```
+     1. Execute `Client CLI` via `share-data` script:
+        ```bash
+        curl -L -o share-data.sh https://github.com/ZKStats/mpc-demo-infra/releases/latest/download/share-data.sh
+        chmod +x share-data.sh
+        ./share-data.sh <eth-address> <binance-api-key> <binance-api-secret>
+        ```
 
 ### Query Computation
 Make sure that you are at the repository root before proceeding.
