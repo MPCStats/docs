@@ -17,11 +17,11 @@ To configure the `Client CLI`, create a `.env.client_cli` file in the configurat
 
 ### Default Configuration (Single-Server, Local HTTP)
 ```
-COORDINATION_SERVER_URL=http://localhost:8005
-PARTY_HOSTS=["localhost", "localhost", "localhost"]
+COORDINATION_SERVER_URL=http://127.0.0.1:8005
+PARTY_HOSTS=["127.0.0.1", "127.0.0.1", "127.0.0.1"]
 PARTY_PORTS=[8006,8007,8008]
 PARTY_WEB_PROTOCOL=http
-NOTARY_SERVER_HOST=localhost
+NOTARY_SERVER_HOST=127.0.0.1
 ```
 
 - If using HTTPS
