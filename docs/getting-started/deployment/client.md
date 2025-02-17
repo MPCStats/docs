@@ -15,7 +15,7 @@ Client CLI provides the following functionalities:
   You can retrieve statistical metrics such as mean, median, max, min, and Gini coefficient based on users’ historical ETH balance contributions
 
 ## Configuration
-To configure the `Client CLI`, create a `.env.client_cli` file in the configuration directory.
+To configure the `Client CLI`, create a `.env.client_cli` file in the appropriate directory.
 
 ### Default Configuration (Single-Server, Local HTTP)
 ```
