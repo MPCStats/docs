@@ -33,14 +33,32 @@ NOTARY_SERVER_HOST=127.0.0.1
 ## Installation
 There are three ways to install the client CLI:
 
-### 1. Using Pre-Built Binary
+### 1. From Source Code
+This method involves building the client entirely from the source code, offering the most security through full transparency and control.
+
+- Bandwidth requirement: Moderate
+- Downloads one repository and dependencies for a Rust executable and a Python3 script. Additionally, it may require downloading Rust, Python3, and Poetry if not already installed.
+
+#### Steps
+1. Clone the repository and cd to the repository root:
+   ```bash
+   git clone https://github.com/ZKStats/mpc-demo-infra.git
+   cd mpc-demo-infra
+   ```
+
+1. Set up the environment:
+
+   ```bash
+   ./setup_env.sh --client
+   ```
+
+### 2. Using Pre-Built Binary
 This method relies on trusting pre-compiled binary. It is the least secure but the simplest and fastest way to install the client.
 
 - Bandwidth requirement: Low
 - Downloads a shell script and two binaries (less than 50MB).
 
 Note: The binaries are built directly from the source code using public GitHub workflows, defined and available in this repository. This ensures participants can verify the process and confirm binary integrity.
-
 #### Steps
 1. Download the script to fetch and execute appropriate binary
    ```
@@ -48,7 +66,7 @@ Note: The binaries are built directly from the source code using public GitHub w
    ```
 1. Follow the instructions in Client CLI Configuration to create an appropriate `.env.client_cli` file in the current directory.
 
-### 2. Using Docker
+### 3. Using Docker
 This method builds the client in an isolated environment using publicly available images, providing moderate security.
 
 - Bandwidth requirement: Very High
@@ -73,52 +91,41 @@ Note: The Dockerfile used for building the client is included in this repository
    ./build.sh
    ```
 
-1. Execute `Client CLI`:
-   ```
-   ./share-data.sh <eth-address> <binance-api-key> <binance-api-secret>
-   ```
+## Execution
 
-### 3. From Source Code
-
-This method involves building the client entirely from the source code, offering the most security through full transparency and control.
-
-- Bandwidth requirement: Moderate
-- Downloads one repository and dependencies for a Rust executable and a Python3 script. Additionally, it may require downloading Rust, Python3, and Poetry if not already installed.
-
-#### Steps
-1. Clone the repository and cd to the repository root:
-   ```bash
-   git clone https://github.com/ZKStats/mpc-demo-infra.git
-   cd mpc-demo-infra
-   ```
-
-1. Set up the environment:
-
-   ```bash
-   ./setup_env.sh --client
-   ```
+### Sharing ETH Balance
+1. Get the Binance API key and secret, following the instructions in [Get Your Binance API Key](https://github.com/ZKStats/mpc-demo-infra/blob/main/mpc_demo_infra/client_cli/docker/README.md#step-1-get-your-binance-api-key)
 
 1. Follow the instructions in Client CLI Configuration to create a `.env.client_cli` in the repository root directory
 
 1. Execute `Client CLI`:
-   ```bash
-   poetry run client-share-data <eth-address> <binance-api-key> <binance-api-secret>
-   ``` 
 
-## Execution
+   - Using Source Code
 
-1. Get the Binance API key and secret, following the instructions in [Get Your Binance API Key](https://github.com/ZKStats/mpc-demo-infra/blob/main/mpc_demo_infra/client_cli/docker/README.md#step-1-get-your-binance-api-key)
+     Make sure that you are at the repository root before proceeding.
 
-1. Get a voucher from the Coordination Server
-   ```bash
-   poetry run get-api-key
-   ```
+     - Single-Server Local Configuration
+       1. Get the container ID of the Notary Server container:
+          ```bash
+          CONTAINER=$(docker ps | grep notary | awk '{print $1}'
+          ```
+       1. Copy `notary.crt` from the container:
+          ```bash
+          docker cp $CONTAINER:/root/tlsn/notary/target/release/fixture/tls/notary.crt .
+          ```
+       1. Follow the instructions in Client CLI Configuration to create a `.env.client_cli` in the repository root directory
 
-### Sharing ETH Balance
-1. Share your ETH balance at Binance with the voucher: 
+       1. Execute `Client CLI`:
+          ```bash
+          poetry run client-share-data <eth-address> <binance-api-key> <binance-api-secret>  --notary-crt-path $(pwd)/notary.crt
+          ``` 
+     - Multi-Server Configuration
+       ```bash
+       poetry run client-share-data <eth-address> <binance-api-key> <binance-api-secret>
+       ```
 
    - Using Pre-Built Binary
-     ```
+     ```bash
      chmod +x share-data.sh
      ./share-data.sh <eth-address> <binance-api-key> <binance-api-secret>
      ```
@@ -126,22 +133,18 @@ This method involves building the client entirely from the source code, offering
    - Using Docker
      Make sure that you are at the repository root before proceeding.
 
-     ```
+     ```bash
      cd ./mpc_demo_infra/client_cli/docker/
      ./share-data.sh <eth-address> <binance-api-key> <binance-api-secret>
-     ```
-
-   - Using Source Code
-
-     Make sure that you are at the repository root before proceeding.
-     ```bash
-     poetry run client-share-data <eth_address> <binance_api_key> <binance_api_secret>
      ```
 
 ### Query Computation
 Make sure that you are at the repository root before proceeding.
 
-```bash
-poetry run client-query
-```
+1. Follow the instructions in Client CLI Configuration to create a `.env.client_cli` in the repository root directory
+
+1. Execute `Client CLI`:
+   ```bash
+   poetry run client-query
+   ```
 
