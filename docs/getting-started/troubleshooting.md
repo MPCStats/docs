@@ -23,7 +23,7 @@ If you encounter issues:
    docker image prune -f
    ```
 1. If you are trying single-server local configuration and getting `UnknownCA` error from `binance_prover`, make sure you don't have the `binance_prover` in the repository root directory.
-
+1. If you get an error like 'P0.pem' is empty, try running `./Scripts/setup-ssl.sh 3` under `MP-SPDZ` directory at the repository root.
 ## Getting Help
 If you encounter any issues during installation, feel free to open an issue in our [GitHub repository](https://github.com/ZKStats/mpc-demo-infra).
 

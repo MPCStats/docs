@@ -53,7 +53,7 @@ This method involves building the client entirely from the source code, offering
    ```
 
 ### 2. Using Pre-Built Binary
-*Note that this installation works only when using HTTPS with a registered domain.*
+*Note that pre-built binary works only with a registered domain.*
 
 This method relies on trusting pre-compiled binary. It is the least secure but the simplest and fastest way to install the client.
 
@@ -107,14 +107,15 @@ Note: The Dockerfile used for building the client is included in this repository
      Make sure that you are at the repository root before proceeding.
 
      - Single-Server Local Configuration
-       1. Get the container ID of the Notary Server container:
-          ```bash
-          CONTAINER=$(docker ps | grep notary | awk '{print $1}')
-          ```
-       1. Copy `notary.crt` from the container:
-          ```bash
-          docker cp $CONTAINER:/root/tlsn/notary/target/release/fixture/tls/notary.crt .
-          ```
+       1. If you're running the servers with `docker-compose`, do the following:
+          1. Get the container ID of the Notary Server container:
+             ```bash
+             CONTAINER=$(docker ps | grep notary | awk '{print $1}')
+             ```
+          1. Copy `notary.crt` from the container:
+             ```bash
+             docker cp $CONTAINER:/root/tlsn/notary/target/release/fixture/tls/notary.crt .
+             ```
        1. Follow the instructions in Client CLI Configuration to create a `.env.client_cli` in the repository root directory
 
        1. Execute `Client CLI`:
