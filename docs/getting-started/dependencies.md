@@ -3,6 +3,7 @@
 - python 3
 - poetry
 - cargo
+- OpenSSL
 - [TLSN](https://github.com/ZKStats/tlsn)
   - branch: `mpspdz-compat`
 - [MP-SPDZ](https://github.com/ZKStats/MP-SPDZ) (only required for computation party server)
