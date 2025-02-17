@@ -7,10 +7,12 @@ sidebar_position: 1
 Client CLI provides the following functionalities:
 
 - Sharing ETH Balance 
-You can anonymously share your ETH balance at Binance as follows:
+
+  You can anonymously share your ETH balance at Binance
 
 - Query Computation
-You can retrieve statistical metrics such as mean, median, max, min, and Gini coefficient based on users’ historical ETH balance contributions with the following command:
+
+  You can retrieve statistical metrics such as mean, median, max, min, and Gini coefficient based on users’ historical ETH balance contributions
 
 ## Configuration
 To configure the `Client CLI`, create a `.env.client_cli` file in the configuration directory.
