@@ -93,6 +93,8 @@ Note: The binaries are built directly from the source code using public GitHub w
              ```bash
              docker cp $CONTAINER:/root/tlsn/notary/target/release/fixture/tls/notary.crt .
              ```
+          1. Execute `Client CLI`:
+          ```bash
           poetry run client-share-data <eth-address> <binance-api-key> <binance-api-secret>  --notary-crt-path $(pwd)/notary.crt
           ``` 
      - Multi-Server Configuration

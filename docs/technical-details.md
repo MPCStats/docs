@@ -112,7 +112,7 @@ Their strength seems to still lie in its [paper](https://www.usenix.org/system/f
 
 **Product**
 
-- **Target Users**: Developer building application at intersection of Blockchain <> Data (mostly AI)
+- **Target Users**: Developer building application at intersection of Blockchain Data (mostly AI)
 - **How to Use**:
   - Need to write program using Nada Language, and deploy it similar to other blockchains.
 - **What calculations**: Anything written in their own language (Nada)
