@@ -107,7 +107,7 @@ Note: The Dockerfile used for building the client is included in this repository
      - Single-Server Local Configuration
        1. Get the container ID of the Notary Server container:
           ```bash
-          CONTAINER=$(docker ps | grep notary | awk '{print $1}'
+          CONTAINER=$(docker ps | grep notary | awk '{print $1}')
           ```
        1. Copy `notary.crt` from the container:
           ```bash
