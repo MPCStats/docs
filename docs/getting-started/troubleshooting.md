@@ -24,7 +24,6 @@ If you encounter issues:
    ```
 1. If you are trying single-server local configuration and getting `UnknownCA` error from `binance_prover`, make sure you don't have the `binance_prover` in the repository root directory.
 1. If you get an error like 'P0.pem' is empty, try running `./Scripts/setup-ssl.sh 3` under `MP-SPDZ` directory at the repository root.
-## Getting Help
 1. If Notary Server's SSL certificate has expired, you can generate a new one by running the following commands from the repository root:
    ```bash
    cd tlsn/notary/server/fixture/tls 
@@ -32,6 +31,6 @@ If you encounter issues:
      && openssl req -new -key notary.key -out request.csr -subj "/C=US/ST=State/L=City/O=Organization/OU=Department/CN=127.0.0.1" \
      && openssl x509 -req -in request.csr -signkey notary.key -out notary.crt -days 365 -extfile openssl.cnf -extensions v3_req
    ```
-
+## Getting Help
 If you encounter any issues during installation, feel free to open an issue in our [GitHub repository](https://github.com/ZKStats/mpc-demo-infra).
 
