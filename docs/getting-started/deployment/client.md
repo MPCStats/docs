@@ -84,16 +84,7 @@ Note: The binaries are built directly from the source code using public GitHub w
      Make sure that you are at the repository root before proceeding.
 
      - Single-Server Local Configuration
-       1. If you're running the servers with `docker-compose`, do the following:
-          1. Get the container ID of the Notary Server container:
-             ```bash
-             CONTAINER=$(docker ps | grep notary | awk '{print $1}')
-             ```
-          1. Copy `notary.crt` from the container:
-             ```bash
-             docker cp $CONTAINER:/root/tlsn/notary/target/release/fixture/tls/notary.crt .
-             ```
-          1. Execute `Client CLI`:
+       1. Execute `Client CLI`:
           ```bash
           poetry run client-share-data <eth-address> <binance-api-key> <binance-api-secret>  --notary-crt-path $(pwd)/notary.crt
           ``` 
