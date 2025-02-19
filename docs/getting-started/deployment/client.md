@@ -14,24 +14,6 @@ Client CLI provides the following functionalities:
 
   You can retrieve statistical metrics such as mean, median, max, min, and Gini coefficient based on users’ historical ETH balance contributions
 
-## Configuration
-To configure the `Client CLI`, create a `.env.client_cli` file in the appropriate directory.
-
-### Default Configuration (Single-Server, Local HTTP)
-```
-COORDINATION_SERVER_URL=http://127.0.0.1:8005
-PARTY_HOSTS=["127.0.0.1", "127.0.0.1", "127.0.0.1"]
-PARTY_PORTS=[8006,8007,8008]
-PARTY_WEB_PROTOCOL=http
-NOTARY_SERVER_HOST=127.0.0.1
-```
-
-- If using HTTPS
-  1. Set PARTY_WEB_PROTOCOL=https and update COORDINATION_SERVER_URL to use https.
-  1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `ssl_certs` directory at the repository root.
-
-- If using multiple servers, update both COORDINATION_SERVER_URL and PARTY_HOSTS with the appropriate IP addresses.
-
 ## Installation
 There are two ways to install the client CLI:
 
@@ -54,6 +36,12 @@ This method involves building the client entirely from the source code, offering
    ./setup_env.sh --client
    ```
 
+   - If using HTTPS
+     1. Set PARTY_WEB_PROTOCOL=https and update COORDINATION_SERVER_URL to use https in `.env.client_cli` in the repository root.
+     1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `ssl_certs` directory at the repository root.
+
+   - If using multiple servers, update both COORDINATION_SERVER_URL, PARTY_HOSTS and NOTARY_SERVER_HOST with the appropriate IP addresses in `.env.client_cli` in the repository root.
+
 ### 2. Using Pre-Built Binary
 *(pre-built binary works only with a registered domain)*
 
@@ -69,13 +57,26 @@ Note: The binaries are built directly from the source code using public GitHub w
    ```
    curl -L -o share-data.sh https://github.com/ZKStats/mpc-demo-infra/releases/latest/download/share-data.sh
    ```
+1. Create `.env.client_cli' in the current directory with the following content:
+   ```bash
+   COORDINATION_SERVER_URL=http://127.0.0.1:8005
+   PARTY_HOSTS=["127.0.0.1", "127.0.0.1", "127.0.0.1"]
+   PARTY_PORTS=[8006,8007,8008]
+   PARTY_WEB_PROTOCOL=http
+   NOTARY_SERVER_HOST=127.0.0.1
+   ```
+
+   - If using HTTPS
+     1. Set PARTY_WEB_PROTOCOL=https and update COORDINATION_SERVER_URL to use https in `.env.client_cli` in the repository root.
+     1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `ssl_certs` directory at the repository root.
+
+   - If using multiple servers, update both COORDINATION_SERVER_URL, PARTY_HOSTS and NOTARY_SERVER_HOST with the appropriate IP addresses in `.env.client_cli` in the repository root.
 
 ## Execution
 
 ### Sharing ETH Balance
 1. Get the Binance API key and secret, following the instructions in [Get Your Binance API Key](https://github.com/ZKStats/mpc-demo-infra/blob/main/mpc_demo_infra/client_cli/docker/README.md#step-1-get-your-binance-api-key)
 
-1. Follow the instructions in Client CLI Configuration to create a `.env.client_cli` in the repository root directory
 
 1. Execute `Client CLI`:
 
@@ -109,10 +110,7 @@ Note: The binaries are built directly from the source code using public GitHub w
 ### Query Computation
 Make sure that you are at the repository root before proceeding.
 
-1. Follow the instructions in Client CLI Configuration to create a `.env.client_cli` in the repository root directory
-
-1. Execute `Client CLI`:
-   ```bash
-   poetry run client-query
-   ```
+```bash
+poetry run client-query
+```
 
