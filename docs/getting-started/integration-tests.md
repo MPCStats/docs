@@ -1,6 +1,6 @@
 ---
 title: "Using Integration Tests"
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Using Integration Tests
