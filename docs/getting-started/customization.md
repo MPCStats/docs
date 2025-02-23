@@ -1,8 +1,8 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
-# Customizing the Infrastructure
+# Customization
 
 Developers can modify and extend the boilerplate to create their own privacy-preserving applications by customizing these following components:
 
@@ -28,7 +28,7 @@ Here is the main file for creating proof, where you can make this following cust
 - Specify "public" parts of the received message.
   We specify the part that we want to make it publicly shown in the proof (recv_public_ranges), by specifying the regex that must be "redacted" & "private"
 
-- Specify "private" parts of the received message.  
+- Specify "private" parts of the received message.
   We specify the private part (recv_private_ranges)that will be accompanied with sha3 commitment in the proof while being censored from the proof itself by specifying our preferred regex. In Binance example, we specify to make ETH free balance of only 2 decimlals precision private.
 
 > With this structure, there will be some parts of received message that is not in either recv_public_ranges or recv_private_ranges. Those will be just redacted data that are censored without its correponding commitment (like in original TLSNotary)
@@ -61,4 +61,14 @@ This customization is to make sure we properly handle what data is allowed to pa
   Just modify the code [here](https://github.com/ZKStats/mpc-demo-infra/blob/e73b35aa487b8dc1efd403edddb80f10ebebf681/mpc_demo_infra/coordination_server/routes.py#L142-L157)
 - Modify how to process database i.e. creating task for sharing data MPC [here](https://github.com/ZKStats/mpc-demo-infra/blob/e73b35aa487b8dc1efd403edddb80f10ebebf681/mpc_demo_infra/coordination_server/routes.py#L233-L250)
 
-## 4. Deploy and test the customized application locally before scaling to a remote setup.
+## 4. Test locally
+
+To quickly check that your infrastructure customization is working as intended, you can run the integration tests as follows:
+
+```bash
+poetry run pytest -s tests/test_integration.py
+```
+
+## 5. Deploy the application locally/remotely
+
+To deploy the application locally, you can follow the steps in the [Deployment](/getting-started/deployment) section.

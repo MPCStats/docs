@@ -1,12 +1,12 @@
 ---
-title: "Client"
-sidebar_position: 1
+title: "Sharing data and querying results"
+sidebar_position: 2
 ---
 
 # Client CLI
 Client CLI provides the following functionalities:
 
-- Sharing ETH Balance 
+- Sharing ETH Balance
 
   You can anonymously share your ETH balance at Binance
 
@@ -88,7 +88,7 @@ Note: The binaries are built directly from the source code using public GitHub w
        1. Execute `Client CLI`:
           ```bash
           poetry run client-share-data <eth-address> <binance-api-key> <binance-api-secret>  --notary-crt-path $(pwd)/notary.crt
-          ``` 
+          ```
      - Multi-Server Configuration
        1. Follow the instructions in Client CLI Configuration to create a `.env.client_cli` in the repository root directory
 

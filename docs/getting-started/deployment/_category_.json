@@ -1,7 +1,9 @@
 {
-  "label": "Deploying the Infrastructure",
+  "label": "Deploying Infrastructure",
+  "position": 1,
   "link": {
-    "type": "generated-index"
+    "type": "generated-index",
+    "slug": "/getting-started/deployment"
   }
 }
 
