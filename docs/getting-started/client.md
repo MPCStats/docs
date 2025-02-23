@@ -43,7 +43,7 @@ This method involves building the client entirely from the source code, offering
    - If using multiple servers, update both COORDINATION_SERVER_URL, PARTY_HOSTS and NOTARY_SERVER_HOST with the appropriate IP addresses in `.env.client_cli` in the repository root.
 
 ### 2. Using Pre-Built Binary
-*(pre-built binary works only with a registered domain)*
+*(Pre-built binaries work only with a registered domain)*
 
 This method relies on trusting pre-compiled binary. It is the least secure but the simplest and fastest way to install the client.
 
