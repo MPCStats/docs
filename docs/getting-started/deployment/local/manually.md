@@ -20,86 +20,14 @@ sidebar_position: 2
    ./setup_env.sh
    ```
 
-1. Create the following configuration files at the repository root:
-   - `.env.coord`
-     ```
-     PORT=8005
-     PARTY_HOSTS=["127.0.0.1", "127.0.0.1", "127.0.0.1"]
-     PARTY_PORTS=[8006, 8007, 8008]
-     PARTY_API_KEY=81f47c24b9fbe22421ea3ae92a9cc8f6
-     PARTY_WEB_PROTOCOL=http
-     PROHIBIT_MULTIPLE_CONTRIBUTIONS=False
-     USER_QUEUE_HEAD_TIMEOUT=60
-     FREE_PORTS_START=8010
-     FREE_PORTS_END=8100
-     ```
-
-   - `.env.party`
-     ```
-     COORDINATION_SERVER_URL=http://127.0.0.1:8005
-     PARTY_API_KEY=81f47c24b9fbe22421ea3ae92a9cc8f6
-     PARTY_HOSTS=["127.0.0.1", "127.0.0.1", "127.0.0.1"]
-     PARTY_PORTS=[8006, 8007, 8008]
-     PARTY_WEB_PROTOCOL=http
-     MAX_DATA_PROVIDERS=1000
-     PERFORM_COMMITMENT_CHECK=False
-     ```
-
-   - `.env.consumer_api`
-     ```
-     COORDINATION_SERVER_URL=http://127.0.0.1:8005
-     CERTS_PATH=certs
-     PARTY_HOSTS=["127.0.0.1", "127.0.0.1", "127.0.0.1"]
-     PARTY_PORTS=["8006","8007","8008"]
-     PARTY_WEB_PROTOCOL=http
-     PORT=8004
-     ```
-
-1. Start the `Coordination Server`
-
-   Make sure you are in the repository root before proceeding.  
-   You can skip `source venv/bin/activate` if Poetry is already installed.
+1. Start all the infrastructure servers:
 
    ```bash
-   source venv/bin/activate # may not be necessary
-   poetry run coord-run
+   ./start-all-server.sh
    ```
 
-1. Start three `Computation Party Server` instances
-
-   In each step, make sure that you are at the repository root before proceeding.
-   You can skip `source venv/bin/activate` if Poetry is already installed.
-
-   1. Open a new terminal and start the `party-0` server:
-   ```bash
-   source venv/bin/activate # may not be necessary
-   PORT=8006 PARTY_ID=0 poetry run party-run
-   ```
-
-   2. Open a new terminal and start the `party-1` server:
-   ```bash
-   source venv/bin/activate # may not be necessary
-   PORT=8007 PARTY_ID=1 poetry run party-run
-   ```
-
-   3. Open a new terminal and start the `party-2` server:
-   ```bash
-   source venv/bin/activate # may not be necessary
-   PORT=8008 PARTY_ID=2 poetry run party-run
-   ```
-
-1. Start the `Data Consumer API Server`
-
-   Make sure that you are at the repository root before proceeding.
+1. Shutdown all the infrastructure servers:
 
    ```bash
-   source venv/bin/activate # may not be necessary
-   poetry run consumer-api-run
+   ./shut-down-all-servers.sh
    ```
-
-1. Start the `Notary Server`
-   ```bash
-   cd ../tlsn/notary/target/release
-   ./notary-server
-   ```
-

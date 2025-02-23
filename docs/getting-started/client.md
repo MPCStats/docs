@@ -32,15 +32,21 @@ This method involves building the client entirely from the source code, offering
 
 1. Set up the environment:
 
-   ```bash
-   ./setup_env.sh --client
-   ```
+   2.1. Setting up client environment:
 
-   - If using HTTPS
-     1. Set PARTY_WEB_PROTOCOL=https and update COORDINATION_SERVER_URL to use https in `.env.client_cli` in the repository root.
-     1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `ssl_certs` directory at the repository root.
+       *If you have already run `./setup_env.sh` to set up the environment for running the infrastructure servers on the current machine, skip this step. Otherwise, this step will delete `binabce_verifier`:*
 
-   - If using multiple servers, update both COORDINATION_SERVER_URL, PARTY_HOSTS and NOTARY_SERVER_HOST with the appropriate IP addresses in `.env.client_cli` in the repository root.
+       ```bash
+       ./setup_env.sh --client
+       ```
+
+   2.2. Additional `Client CLI` Configurations:
+
+       - If using HTTPS
+         1. Set PARTY_WEB_PROTOCOL=https and update COORDINATION_SERVER_URL to use https in `.env.client_cli` in the repository root.
+         1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `ssl_certs` directory at the repository root.
+
+       - If using multiple servers, update both COORDINATION_SERVER_URL, PARTY_HOSTS and NOTARY_SERVER_HOST with the appropriate IP addresses in `.env.client_cli` in the repository root.
 
 ### 2. Using Pre-Built Binary
 *(Pre-built binaries work only with a registered domain)*
