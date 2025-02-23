@@ -23,11 +23,11 @@ sidebar_position: 2
 1. Start all the infrastructure servers:
 
    ```bash
-   ./start-all-server.sh
+   ./start-all-servers.sh
    ```
 
 1. Shutdown all the infrastructure servers:
 
    ```bash
-   ./shut-down-all-servers.sh
+   ./shutdown-all-servers.sh
    ```
