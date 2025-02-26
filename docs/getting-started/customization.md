@@ -6,10 +6,6 @@ sidebar_position: 3
 
 Developers can modify and extend the boilerplate to create their own privacy-preserving applications by customizing these following components.
 
-- Add new data sources: e.g.
-
-
-
 ## 1. Modify the TLSNotary prover and verifier for new data sources.
 
 > This is a bit different from original TLSNotary, because in addition to being able to specify "redacted" parts of data where they are just not shown in the proof, users can also specify the "private" parts in the proof, which are not only not shown in the proof, but also having their sha3 commitment in the proof such that they can be seamlessly integrated with MP-SPDZ to make sure that the inputs of MP-SPDZ actually come from the private parts of these data from TLSNotary. This guide will mostly focus on customizing this additional "private" feature.
