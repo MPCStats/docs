@@ -8,15 +8,15 @@
 - During MPC, the balance is used as a private input, and a TLSNotary commitment is calculated and revealed alongside the stats result.
 - All parties verify the TLSNotary proof to ensure that the private input matches the commitment, providing input correctness.
 
-## Client Interface
+## Delegated MPC
 
 ![client-interface](./client-interface.png)
 
-In vanilla MPC, for data consumers to know the results from a computation, all data providers and consumers must stay online all the time, but that's not practical for
+Traditional MPC requires all participants (data providers and consumers) to be online simultaneously to exchange messages, which becomes impractical in real-world applications with many participants. To solve this, we use the [client interface](https://mp-spdz.readthedocs.io/en/latest/client-interface.html) feature to delegate the MPC computation to dedicated computation parties that remain online continuously. This allows data providers and consumers to go offline after submitting their data or queries.
 
 - Data Providers: Share masked balances with 3 computation parties via secret sharing. This allows them to go offline after providing their data.
-- Computation Parties: Perform MPC to compute the statistical result.
-- Data Consumers: Query results from the computation parties, ensuring asynchronous participation.
+- Computation Parties: Store the secret-shared data and perform MPC to compute the statistical result.
+- Data Consumers: Query results from the computation parties.
 
 ## Benchmarks
 
@@ -35,13 +35,13 @@ We evaluate the technology using this [framework](https://arxiv.org/pdf/2012.083
   - Make sure service providers process data without being able to see it or use it for other purposes outside of the governed info flow.
   - Most tech we know: zkp, mpc, fhe, enclave, …
 - Output Privacy: Cannot reverse engineer input from output
-  - Differential Privacy (DP) gives limit on the likelihood that can infer input,eEspecially for preventing linkability of data that is split by category. For example, if documents are grouped by authors employer, then statistics are calculated across documents, DP can prevent one from knowing info specific to an employer.
+  - Differential Privacy (DP) gives limit on the likelihood that can infer input, especially for preventing linkability of data that is split by category. For example, if documents are grouped by authors employer, then statistics are calculated across documents, DP can prevent one from knowing info specific to an employer.
 - Input Verification: Ensure that the information comes form you
   - public key infra, digital signature, zkp (ability to verify the input to arbitrary computation)
 - Output Verification: Ensure the process of calculation is correct
   - Without causing recursive oversight problem
 - Flow Governance: Who holds authority to modify the flow
-  - mostly MPC to not concentrate power withint one entity
+  - mostly MPC to not concentrate power within one entity
 
 #### 1.[PySyft](https://github.com/OpenMined/PySyft): PET with [data science](https://ep2024.europython.eu/session/pysyft-data-science-on-data-you-are-not-allowed-to-see/)
 

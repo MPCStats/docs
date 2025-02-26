@@ -155,7 +155,7 @@ Perform the following steps on each of the three servers running a Computation P
    Make sure that you are at the repository root before proceeding.
 
    ```bash
-   poetry run consumet-api-run
+   poetry run consumer-api-run
    ```
 
 ## Deploying the Notary Server
@@ -175,7 +175,7 @@ Make sure that you are at the repository root before proceeding.
    sed -i "s/XXX/%NOTARY_IP%/" openssl.cnf
    openssl genpkey -algorithm RSA -out notary.key -pkeyopt rsa_keygen_bits:2048
    openssl req -new -key notary.key -out request.csr -subj "/C=US/ST=State/L=City/O=Organization/OU=Department/CN=%NOTARY_IP%"
-   openssl x509 -req -in request.csr -signkey notary.key -out notary.crt -days 365 -extfile openssl.cnf -extensions v3_req 
+   openssl x509 -req -in request.csr -signkey notary.key -out notary.crt -days 365 -extfile openssl.cnf -extensions v3_req
    popd
    ```
 

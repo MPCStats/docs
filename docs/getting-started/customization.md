@@ -1,10 +1,14 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Customization
 
-Developers can modify and extend the boilerplate to create their own privacy-preserving applications by customizing these following components:
+Developers can modify and extend the boilerplate to create their own privacy-preserving applications by customizing these following components.
+
+- Add new data sources: e.g.
+
+
 
 ## 1. Modify the TLSNotary prover and verifier for new data sources.
 
