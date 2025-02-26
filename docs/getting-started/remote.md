@@ -16,13 +16,15 @@ Below instructions assume that the servers will be installed on:
 - `192.168.0.103` (Computation Party Server 2)
 
 ## 1.1. Deploy Coordination Server and Data Consumer API Server
-1. Clone the repository and cd to the repository root:
+1. Install Poetry by following the instructions [here](https://python-poetry.org/docs/#installation).
+
+2. Clone the repository and cd to the repository root:
    ```bash
    git clone https://github.com/ZKStats/mpc-demo-infra.git
    cd mpc-demo-infra
    ```
 
-2. Create the configuration file at the repository root:
+3. Create the configuration file at the repository root:
    - `.env.coord`
      ```
      PORT=8005
@@ -45,17 +47,17 @@ Below instructions assume that the servers will be installed on:
      PORT=8004
      ```
 
-3. Set up the environment:
+4. Set up the environment:
    ```bash
    ./setup_env.sh --coord --consumer --notary
    ```
 
-4. Start the coordination server:
+5. Start the coordination server:
    ```bash
    poetry run coord-run
    ```
 
-5. Start the data consumer API server:
+6. Start the data consumer API server:
    ```bash
    poetry run consumer-api-run
    ```
@@ -63,13 +65,15 @@ Below instructions assume that the servers will be installed on:
 ## 1.2. Deploy Computation Party Servers
 
 For each party server, perform the following steps:
-1. Clone the repository and cd to the repository root:
+1. Install Poetry by following the instructions [here](https://python-poetry.org/docs/#installation).
+
+2. Clone the repository and cd to the repository root:
    ```bash
    git clone https://github.com/ZKStats/mpc-demo-infra.git
    cd mpc-demo-infra
    ```
 
-2. Create the configuration file at the repository root:
+3. Create the configuration file at the repository root:
    - `.env.party`
      ```
      COORDINATION_SERVER_URL=http://192.168.0.100:8005
@@ -81,12 +85,12 @@ For each party server, perform the following steps:
      PERFORM_COMMITMENT_CHECK=True
      ```
 
-3. Set up the environment:
+4. Set up the environment:
    ```bash
    ./setup_env.sh --party
    ```
 
-4. Start the party server:
+5. Start the party server:
     For party 0, run:
    ```bash
    PORT=8006 PARTY_ID=0 poetry run party-run
@@ -102,15 +106,17 @@ For each party server, perform the following steps:
 
 
 ## 2. Sharing ETH Balance
+1. Install Poetry by following the instructions [here](https://python-poetry.org/docs/#installation).
 
-1. Get the Binance API key and secret, following the instructions in [Get Your Binance API Key](https://github.com/ZKStats/mpc-demo-infra/blob/main/mpc_demo_infra/client_cli/docker/README.md#step-1-get-your-binance-api-key)
+2. Get the Binance API key and secret, following the instructions in [Get Your Binance API Key](https://github.com/ZKStats/mpc-demo-infra/blob/main/mpc_demo_infra/client_cli/docker/README.md#step-1-get-your-binance-api-key)
 
-2. Clone the repository and cd to the repository root:
+3. Clone the repository and cd to the repository root:
    ```bash
    git clone https://github.com/ZKStats/mpc-demo-infra.git
    cd mpc-demo-infra
    ```
-3. Create the configuration file at the repository root:
+
+4. Create the configuration file at the repository root:
    - `.env.client_cli`
      ```
      COORDINATION_SERVER_URL=http://192.168.0.100:8005
@@ -120,7 +126,7 @@ For each party server, perform the following steps:
      NOTARY_SERVER_HOST=192.168.0.100
      ```
 
-4. Execute `Client CLI`:
+5. Execute `Client CLI`:
     ```bash
     poetry run client-share-data <eth-address> <binance-api-key> <binance-api-secret>
     ```

@@ -12,23 +12,25 @@ You have two options for deploying the servers locally:
 
 ### 1.1. Manual Deployment
 
-1. Clone the repository and navigate to the repository root:
+1. Install Poetry by following the instructions [here](https://python-poetry.org/docs/#installation).
+
+2. Clone the repository and navigate to the repository root:
    ```bash
    git clone https://github.com/ZKStats/mpc-demo-infra.git
    cd mpc-demo-infra
    ```
 
-2. Set up the environment:
+3. Set up the environment:
    ```bash
    ./setup_env.sh
    ```
 
-3. Start the servers:
+4. Start the servers:
    ```bash
    ./start-all-servers.sh
    ```
 
-4. Shutdown the servers:
+5. Shutdown the servers:
    ```bash
    ./shutdown-all-servers.sh
    ```
