@@ -33,9 +33,9 @@ You have two options for deploying the servers locally:
    ./shutdown-all-servers.sh
    ```
 
-### 1.2. Docker Deployment (Recommended)
+### 1.2. Or with Docker
 
-Alternatively, you can use Docker for a simpler deployment experience:
+Alternatively, you can use Docker for a simpler deployment experience, though it might take time to build the images:
 
 1. Install `Docker` by following the instructions [here](https://docs.docker.com/engine/install/).
 
