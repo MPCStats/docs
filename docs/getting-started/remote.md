@@ -49,7 +49,7 @@ Below instructions assume that the servers will be installed on:
 
 4. Set up the environment:
    ```bash
-   ./setup_env.sh --coord --consumer --notary
+   ./setup_env.sh --coord --consumer
    ```
 
 5. Start the coordination server:
@@ -116,14 +116,19 @@ For each party server, perform the following steps:
    cd mpc-demo-infra
    ```
 
-4. Create the configuration file at the repository root:
+4. Set up Client:
+    ```bash
+    ./setup_env.sh --client --notary
+    ```
+
+4. Modify the configuration file at the repository root:
    - `.env.client_cli`
      ```
      COORDINATION_SERVER_URL=http://192.168.0.100:8005
      PARTY_HOSTS=["192.168.0.100", "192.168.0.101", "192.168.0.102"]
      PARTY_PORTS=["8006","8007","8008"]
      PARTY_WEB_PROTOCOL=http
-     NOTARY_SERVER_HOST=192.168.0.100
+     NOTARY_SERVER_HOST=127.0.0.1
      ```
 
 5. Execute `Client CLI`:

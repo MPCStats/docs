@@ -59,9 +59,9 @@ Alternatively, you can use Docker for a simpler deployment experience, though it
 
 1. Get the Binance API key and secret, following the instructions in [Get Your Binance API Key](https://github.com/ZKStats/mpc-demo-infra/blob/main/mpc_demo_infra/client_cli/docker/README.md#step-1-get-your-binance-api-key)
 
-2. Create a `.env.client_cli` file in the repository root with the following content:
+2. Set up Client:
     ```bash
-    cp .env.client_cli.example .env.client_cli
+    ./setup_env.sh --client
     ```
 
 3. Run the client CLI:
