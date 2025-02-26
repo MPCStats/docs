@@ -75,4 +75,4 @@ poetry run pytest -s tests/test_integration.py
 
 ## 5. Deploy the application locally/remotely
 
-To deploy the application locally, you can follow the steps in the [Deployment](/getting-started/deployment) section.
+To deploy the application locally, you can follow the steps in the [Local Deployment](/getting-started/local-deployment) and [Remote Deployment](/getting-started/remote-deployment) sections.

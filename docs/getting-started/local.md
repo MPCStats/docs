@@ -1,6 +1,6 @@
 ---
 title: "Local Deployment and Testing"
-slug: /getting-started/local-testing
+slug: /getting-started/local-deployment
 sidebar_position: 1
 ---
 
