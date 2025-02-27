@@ -27,13 +27,9 @@ You have two options for deploying the servers locally:
 
 4. Start the servers:
    ```bash
-   ./start-all-servers.sh
+   ./run_all_servers.sh
    ```
-
-5. Shutdown the servers:
-   ```bash
-   ./shutdown-all-servers.sh
-   ```
+   Shutdown the servers with `Ctrl+C`.
 
 ### 1.2. Or with Docker
 
@@ -54,31 +50,37 @@ Alternatively, you can use Docker for a simpler deployment experience, though it
    docker-compose down
    ```
 
-
-## 2. Sharing ETH Balance
-
-1. Get the Binance API key and secret, following the instructions in [Get Your Binance API Key](https://github.com/ZKStats/mpc-demo-infra/blob/main/mpc_demo_infra/client_cli/docker/README.md#step-1-get-your-binance-api-key)
-
-2. Set up Client:
+## 2. Data Providers and Consumer
+1. Set up client env if you haven't done so:
     ```bash
     ./setup_env.sh --client
     ```
 
-3. Run the client CLI:
+
+### 2.1. Sharing ETH Balance
+
+1. Get the Binance API key and secret, following the instructions in [Get Your Binance API Key](https://github.com/ZKStats/mpc-demo-infra/blob/main/mpc_demo_infra/client_cli/docker/README.md#step-1-get-your-binance-api-key)
+
+2. Run the client CLI:
     ```bash
     poetry run client-share-data <eth-address> <binance-api-key> <binance-api-secret>
     ```
     where `<eth-address>` can be any random Ethereum address, `<binance-api-key>` is your Binance API key, `<binance-api-secret>` is your Binance API secret.
 
 
-## 3. Querying Results
+### 2.2. Querying Results
 
-Query with Client CLI
+Query statistical results.
 ```bash
 poetry run client-query
 ```
 
-or query with Client API:
+> Please make sure you have run `client-share-data` first, otherwise you will get an error like
+>    ```bash
+>    2025-02-27 17:36:46 [ERROR] Failed to query computation: Failed to query computation: response.status=400, await response.text()='{"detail":"No MPC session found"}'
+>    ```
+
+You can also query results with Client API:
 ```bash
 curl http://127.0.0.1:8004/query-computation
 ```
