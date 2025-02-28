@@ -28,7 +28,7 @@ Below instructions assume that the servers will be installed on:
    - `.env.coord`
      ```
      PORT=8005
-     PARTY_HOSTS=["192.168.0.100", "192.168.0.101", "192.168.0.102"]
+     PARTY_HOSTS=["192.168.0.101", "192.168.0.102", "192.168.0.103"]
      PARTY_PORTS=[8006, 8007, 8008]
      PARTY_API_KEY=81f47c24b9fbe22421ea3ae92a9cc8f6
      PARTY_WEB_PROTOCOL=http
@@ -41,7 +41,7 @@ Below instructions assume that the servers will be installed on:
      ```
      COORDINATION_SERVER_URL=http://192.168.0.100:8005
      CERTS_PATH=certs
-     PARTY_HOSTS=["192.168.0.100", "192.168.0.101", "192.168.0.102"]
+     PARTY_HOSTS=["192.168.0.101", "192.168.0.102", "192.168.0.103"]
      PARTY_PORTS=["8006","8007","8008"]
      PARTY_WEB_PROTOCOL=http
      PORT=8004
@@ -78,7 +78,7 @@ For each party server, perform the following steps:
      ```
      COORDINATION_SERVER_URL=http://192.168.0.100:8005
      PARTY_API_KEY=81f47c24b9fbe22421ea3ae92a9cc8f6
-     PARTY_HOSTS=["192.168.0.100", "192.168.0.101", "192.168.0.102"]
+     PARTY_HOSTS=["192.168.0.101", "192.168.0.102", "192.168.0.103"]
      PARTY_PORTS=[8006, 8007, 8008]
      PARTY_WEB_PROTOCOL=http
      MAX_DATA_PROVIDERS=1000
@@ -116,16 +116,21 @@ For each party server, perform the following steps:
    cd mpc-demo-infra
    ```
 
-4. Set up Client:
+4. Set up Client and Notary Server:
     ```bash
     ./setup_env.sh --client --notary
+    ```
+
+5. Start Notary Server
+    ```bash
+    ./tlsn/notary/target/release/notary-server
     ```
 
 4. Modify the configuration file at the repository root:
    - `.env.client_cli`
      ```
      COORDINATION_SERVER_URL=http://192.168.0.100:8005
-     PARTY_HOSTS=["192.168.0.100", "192.168.0.101", "192.168.0.102"]
+     PARTY_HOSTS=["192.168.0.101", "192.168.0.102", "192.168.0.103"]
      PARTY_PORTS=["8006","8007","8008"]
      PARTY_WEB_PROTOCOL=http
      NOTARY_SERVER_HOST=127.0.0.1
