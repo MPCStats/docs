@@ -5,7 +5,7 @@ slug: /
 
 # Introduction
 
-MPCStats Demo Infrastructure is designed for privacy-preserving statistical survey using Multi-Party Computation (MPC). It enables multiple data providers to share inputs without exposing them to others while allowing the computation of aggregate statistics. The system is adaptable, supporting various data sources and statistical operations.
+[MPCStats Demo Infrastructure](https://github.com/zkStats/mpc-demo-infra/) is designed for privacy-preserving statistical survey using Multi-Party Computation (MPC). It enables multiple data providers to share inputs without exposing them to others while allowing the computation of aggregate statistics. The system is adaptable, supporting various data sources and statistical operations.
 
 ## Why MPCStats Demo Infrastructure?
 

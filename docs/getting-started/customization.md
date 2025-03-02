@@ -4,9 +4,9 @@ sidebar_position: 3
 
 # Customization
 
-Developers can modify and extend the boilerplate to create their own privacy-preserving applications. The ones marked with red are the ones that should be changed to customize for new data sources or different statistical operations.
+Developers can modify and extend the Binance ETH Balance Demo to create their own privacy-preserving applications. This can be using other data sources, different statistical operations, stricter verification for sharing data, etc.
 
-![Components to be customized](../components-to-be-customized.png)
+![Components Flow Diagram](../components-flow.png)
 
 
 Follow the steps below to customize the components.
