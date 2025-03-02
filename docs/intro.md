@@ -21,6 +21,19 @@ We provide these features:
   - **For data providers and consumers**: By delegating MPC to three non-colluding servers, participants experience a workflow similar to traditional statistical survey systems. This design allows users to submit data and disconnect, enhancing usability without compromising privacy.
 
 MPCStats Demo Infrastructure ensures privacy-preserving and verifiable results, making it suitable for sensitive applications such as financial analysis, health data aggregation, and collaborative statistics.
+
+## Demo at Devcon 2024
+
+We had a demo at [Devcon 2024](https://www.youtube.com/watch?v=wCp7Zsjou7w) where participants can prove and share their Binance ETH balance in their spot account using the Binance API. We then derive the mean, median, max, and gini index of the balances of all participants, without revealing their individual balances.
+
+This demo demonstrates how real-world data sources like Binance can be securely integrated into privacy-preserving statistical computations using MPC and TLSNotary. It's a foundational step toward building tools that enable collaborative data analysis while preserving user privacy.
+
+You can explore our [implementation code](https://github.com/ZKStats/mpc-demo-infra) and read our detailed [Devcon Demo Report](https://pse-team.notion.site/MPCStats-Devcon-Demo-Report-3055bb69afd24d60bf8ee8d4fa5f774c) to learn more about the technical details and outcomes of this demonstration. For the rest of the documentation, we'll focus on the components and workflow of the demo.
+
+Below is what our stats page looked like:
+
+![Devcon demo interface](./devcon-demo.png)
+
 <!--
 MPCStats Demo Infrastructure is the demo built by the [MPCStats](https://pse.dev/en/projects/mpc-stats) team for [Devcon 7](https://www.youtube.com/watch?v=wCp7Zsjou7w). Data providers can share their data privately, and data consumers can learn statistical results from all shared data.
 

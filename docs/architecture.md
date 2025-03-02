@@ -8,17 +8,22 @@ We use a client-server architecture where data providers and consumers delegate 
 
 ## Components
 
+
+Below is the workflow of the demo. The black arrows are the flow for sharing data and the blue ones are the flow for querying the results.
+
+![Components flow diagram](./components-flow.png)
+
 - **Coordination Server**: Coordinates communication between data providers, data consumers, and computation parties.
   - Implements basic congestion control, rate-limiting, and sybil prevention to maintain system robustness.
   - Does not access or store plaintext data.
-- **Computation Parties (3 servers)**:
+- **Computation Party Servers (3 servers)**:
   - Store encrypted data received from data providers.
   - Perform statistical operations defined in MPC   while verifying the data matches TLSNotary proof.
   - Return results to data consumers.
   - Each party operates independently to ensure security.
 - **TLSNotary Server**: Data providers use it to generate proofs confirming their data is authenticated from verified websites.
 - **(Optional) Client API**:
-  - Acts as a data consumer by periodically polling computation parties for results and caches them.
+  - It's not shown in the diagram above since it's basically a data consumer that polls computation parties for results and caches them.
   - Offers a simple REST API for end users to query statistical results without directly interacting with the Coordination Server, preventing unnecessary MPC computations.
 
 ## System Workflow
@@ -45,7 +50,6 @@ We use a client-server architecture where data providers and consumers delegate 
 - **Coordination Server**:
   - Centralized to streamline coordination but does not access or store plaintext data.
   - Rate-limiting and participant verification reduce the risk of Sybil attacks and DoS.
-    - In Binance case, we expose a field "uid" in the TLSNotary proof, which is a unique identifier for each data provider. This way we prevent Sybil attacks by checking if the uid is unique.
 - **Notary Server**:
   - Participants trust the Notary Server to generate a correct proof.
   - By default, we use a local notary whose private keys are exposed, so it's possible for people to forge it. A trusted party running a remote notary server can mitigate this risk.
