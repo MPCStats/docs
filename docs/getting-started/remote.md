@@ -123,9 +123,7 @@ For each party server, perform the following steps:
 
 5. Start Notary Server
     ```bash
-    pushd ./tlsn/notary/target/release
-    ./notary-server &
-    popd
+    ./run_servers --notary-only
     ```
 
 4. Modify the configuration file at the repository root:

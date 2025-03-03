@@ -25,9 +25,9 @@ You have two options for deploying the servers locally:
    ./setup_env.sh
    ```
 
-4. Start the servers:
+4. Start all of the servers:
    ```bash
-   ./run_all_servers.sh
+   ./run_servers.sh
    ```
    Shutdown the servers with `Ctrl+C`.
 

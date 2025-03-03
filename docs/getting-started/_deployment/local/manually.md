@@ -28,7 +28,7 @@ sidebar_position: 2
    Make sure that you are at the repository root before proceeding.
 
    ```bash
-   ./start-all-servers.sh
+   ./run_servers.sh
    ```
 
 1. Shutdown all the infrastructure servers:
@@ -36,5 +36,5 @@ sidebar_position: 2
    Make sure that you are at the repository root before proceeding.
 
    ```bash
-   ./shutdown-all-servers.sh
+   ./shutdown_all_servers.sh
    ```
