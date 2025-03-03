@@ -121,7 +121,7 @@ For each party server, perform the following steps:
     ./setup_env.sh --client --notary
     ```
 
-5. Start Notary Server
+5. Start Notary Server:
     ```bash
     ./run_servers.sh --notary-only
     ```
