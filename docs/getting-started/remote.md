@@ -123,7 +123,7 @@ For each party server, perform the following steps:
 
 5. Start Notary Server
     ```bash
-    ./run_servers --notary-only
+    ./run_servers.sh --notary-only
     ```
 
 4. Modify the configuration file at the repository root:
