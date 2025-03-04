@@ -31,24 +31,6 @@ You have two options for deploying the servers locally:
    ```
    Shutdown the servers with `Ctrl+C`.
 
-### 1.2. Or with Docker
-
-Alternatively, you can use Docker for a simpler deployment experience, though it might take time to build the images:
-
-1. Install `Docker` by following the instructions [here](https://docs.docker.com/engine/install/).
-
-2. Install `Docker Compose` by following the instructions [here](https://docs.docker.com/compose/install/).
-
-3. Build and start all servers with:
-   ```bash
-   ./config-docker-compose.py
-   docker-compose up --build
-   ```
-
-   To stop the servers, press `Ctrl+C` or run:
-   ```bash
-   docker-compose down
-   ```
 
 ## 2. Data Providers and Consumer
 1. Set up client env if you haven't done so:
