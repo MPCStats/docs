@@ -11,7 +11,7 @@ sidebar_position: 2
 1. Clone the repository and cd to the repository root:
 
    ```bash
-   git clone https://github.com/MPCStats/mpc-demo-infra.git
+   git clone --recursive https://github.com/MPCStats/mpc-demo-infra.git
    cd mpc-demo-infra
    ```
 

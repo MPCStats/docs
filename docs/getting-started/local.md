@@ -16,7 +16,7 @@ You have two options for deploying the servers locally:
 
 2. Clone the repository and navigate to the repository root:
    ```bash
-   git clone https://github.com/MPCStats/mpc-demo-infra.git
+   git clone --recursive https://github.com/MPCStats/mpc-demo-infra.git
    cd mpc-demo-infra
    ```
 
@@ -30,13 +30,6 @@ You have two options for deploying the servers locally:
    ./run_servers.sh
    ```
    Shutdown the servers with `Ctrl+C`.
-
-
-## 2. Data Providers and Consumer
-1. Set up client env if you haven't done so:
-    ```bash
-    ./setup_env.sh --client
-    ```
 
 
 ### 2.1. Sharing ETH Balance

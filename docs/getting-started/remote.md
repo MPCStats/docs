@@ -20,7 +20,7 @@ Below instructions assume that the servers will be installed on:
 
 2. Clone the repository and cd to the repository root:
    ```bash
-   git clone https://github.com/MPCStats/mpc-demo-infra.git
+   git clone --recursive https://github.com/MPCStats/mpc-demo-infra.git
    cd mpc-demo-infra
    ```
 
@@ -69,7 +69,7 @@ For each party server, perform the following steps:
 
 2. Clone the repository and cd to the repository root:
    ```bash
-   git clone https://github.com/MPCStats/mpc-demo-infra.git
+   git clone --recursive https://github.com/MPCStats/mpc-demo-infra.git
    cd mpc-demo-infra
    ```
 
@@ -112,7 +112,7 @@ For each party server, perform the following steps:
 
 3. Clone the repository and cd to the repository root:
    ```bash
-   git clone https://github.com/MPCStats/mpc-demo-infra.git
+   git clone --recursive https://github.com/MPCStats/mpc-demo-infra.git
    cd mpc-demo-infra
    ```
 
