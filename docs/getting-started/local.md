@@ -16,7 +16,7 @@ You have two options for deploying the servers locally:
 
 2. Clone the repository and navigate to the repository root:
    ```bash
-   git clone https://github.com/ZKStats/mpc-demo-infra.git
+   git clone https://github.com/MPCStats/mpc-demo-infra.git
    cd mpc-demo-infra
    ```
 
@@ -41,7 +41,7 @@ You have two options for deploying the servers locally:
 
 ### 2.1. Sharing ETH Balance
 
-1. Get the Binance API key and secret, following the instructions in [Get Your Binance API Key](https://github.com/ZKStats/mpc-demo-infra/blob/main/mpc_demo_infra/client_cli/docker/README.md#step-1-get-your-binance-api-key)
+1. Get the Binance API key and secret, following the instructions in [Get Your Binance API Key](https://github.com/MPCStats/mpc-demo-infra/blob/main/mpc_demo_infra/client_cli/docker/README.md#step-1-get-your-binance-api-key)
 
 2. Run the client CLI:
     ```bash

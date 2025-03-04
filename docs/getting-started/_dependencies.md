@@ -8,9 +8,9 @@ sidebar_position: 3
 - poetry
 - cargo
 - OpenSSL
-- [TLSN](https://github.com/ZKStats/tlsn)
+- [TLSN](https://github.com/MPCStats/tlsn)
   - branch: `mpspdz-compat`
-- [MP-SPDZ](https://github.com/ZKStats/MP-SPDZ) (only required for computation party server)
+- [MP-SPDZ](https://github.com/MPCStats/MP-SPDZ) (only required for computation party server)
   - branch: `demo_client`
   - need to add `MOD = -DGFP_MOD_SZ=5 -DRING_SIZE=257` to `CONFIG.mine`
   - install: `make setup`

@@ -15,11 +15,11 @@ Follow the steps below to customize the components.
 
 > This is a bit different from original TLSNotary, because in addition to being able to specify "redacted" parts of data where they are just not shown in the proof, users can also specify the "private" parts in the proof, which are not only not shown in the proof, but also having their sha3 commitment in the proof such that they can be seamlessly integrated with MP-SPDZ to make sure that the inputs of MP-SPDZ actually come from the private parts of these data from TLSNotary. This guide will mostly focus on customizing this additional "private" feature.
 
-We have a few examples [here](https://github.com/ZKStats/mpc-demo-infra/tree/main/tlsn/tlsn/examples), but to be fully compatible with end-to-end flow, let's take a look at how to customize this TLSNotary prover and verifier from Binance Eth Balance [Example](https://github.com/ZKStats/mpc-demo-infra/tree/main/tlsn/tlsn/examples/binance) by modifying the following files:
+We have a few examples [here](https://github.com/MPCStats/mpc-demo-infra/tree/main/tlsn/tlsn/examples), but to be fully compatible with end-to-end flow, let's take a look at how to customize this TLSNotary prover and verifier from Binance Eth Balance [Example](https://github.com/MPCStats/mpc-demo-infra/tree/main/tlsn/tlsn/examples/binance) by modifying the following files:
 
 ### 1.1. TLSN Prover
 
-The TLSN prover for Binance ETH balance is in [binance_prover.rs](https://github.com/ZKStats/mpc-demo-infra/blob/main/tlsn/tlsn/examples/binance/binance_prover.rs). It's the main file for creating proof, where you can make this following customizations for "private" part of data.
+The TLSN prover for Binance ETH balance is in [binance_prover.rs](https://github.com/MPCStats/mpc-demo-infra/blob/main/tlsn/tlsn/examples/binance/binance_prover.rs). It's the main file for creating proof, where you can make this following customizations for "private" part of data.
 
 **In main()**:
 
@@ -54,7 +54,7 @@ Here, we just encapsulate the logic that distinguishes which part is just redact
 
 ## 2. Update the MPC program to include additional or modified statistical operations.
 
-We define a computation template in [query_computation.mpc](https://github.com/ZKStats/mpc-demo-infra/blob/d8de6b4dcf85ff434ca48cb2af3bd00de43aba8a/mpc_demo_infra/program/query_computation.mpc#L26-L64). Whenever there is a new stats query, each MPC party fill in necessary information in this template and runs the program with other MPC parties.
+We define a computation template in [query_computation.mpc](https://github.com/MPCStats/mpc-demo-infra/blob/d8de6b4dcf85ff434ca48cb2af3bd00de43aba8a/mpc_demo_infra/program/query_computation.mpc#L26-L64). Whenever there is a new stats query, each MPC party fill in necessary information in this template and runs the program with other MPC parties.
 
 ```python
 # Filled in by computation party
@@ -63,7 +63,7 @@ MAX_DATA_PROVIDERS = {max_data_providers}
 NUM_DATA_PROVIDERS = {num_data_providers}
 ```
 
-Actual statistical operations are done in [`computation` function](https://github.com/ZKStats/mpc-demo-infra/blob/d8de6b4dcf85ff434ca48cb2af3bd00de43aba8a/mpc_demo_infra/program/query_computation.mpc#L26-L64). You can see the following lines in the function
+Actual statistical operations are done in [`computation` function](https://github.com/MPCStats/mpc-demo-infra/blob/d8de6b4dcf85ff434ca48cb2af3bd00de43aba8a/mpc_demo_infra/program/query_computation.mpc#L26-L64). You can see the following lines in the function
 ```python=
     result[0] = sint(num_data_providers)
     # Max
@@ -92,9 +92,9 @@ You can see for `result[3]`, we use `mpcstats_lib.median(data)` to calculate the
 - stats operations: `mean`, `median`, `covariance`, `correlation`, `geometric_mean`, `mode`, `variance`, `linear_regression`, `harmonic_mean`
 - data operations: `where`, `join`
 
-See the implementation [here](https://github.com/ZKStats/MP-SPDZ/blob/cdad13da73d4bcd7e10c04efd8c22cba7453f0c3/mpcstats/mpcstats_lib.py#L79-L303). To learn more about the DSL for MPC program, make sure to check out [MP-SPDZ documentation](https://mp-spdz.readthedocs.io/en/latest/readme.html).
+See the implementation [here](https://github.com/MPCStats/MP-SPDZ/blob/cdad13da73d4bcd7e10c04efd8c22cba7453f0c3/mpcstats/mpcstats_lib.py#L79-L303). To learn more about the DSL for MPC program, make sure to check out [MP-SPDZ documentation](https://mp-spdz.readthedocs.io/en/latest/readme.html).
 
-After changing the MPC program, you also need to update the [Client CLI](https://github.com/ZKStats/mpc-demo-infra/blob/c57245417eec906947bd463e4651ecc528f949ce/mpc_demo_infra/client_lib/lib.py#L107-L113) so that it parse the result correctly.
+After changing the MPC program, you also need to update the [Client CLI](https://github.com/MPCStats/mpc-demo-infra/blob/c57245417eec906947bd463e4651ecc528f949ce/mpc_demo_infra/client_lib/lib.py#L107-L113) so that it parse the result correctly.
 
 ```python
     results = StatsResults(
@@ -112,10 +112,10 @@ Here, we parse the result from the MPC program. Values are divided by `10 * BINA
 This customization is to make sure we properly handle what data is allowed to participate in MPC process. In Binance example, we make sure that one "uid" (user id of binance account) can only submit one proof. Hence, with different data source, we need to adjust how we store & process data in coordination accordingly as follows.
 
 - Specify what to store in Coordination Server.
-  In Binance example, we store eth_address and uid [here](https://github.com/ZKStats/mpc-demo-infra/blob/e73b35aa487b8dc1efd403edddb80f10ebebf681/mpc_demo_infra/coordination_server/database.py#L31)
+  In Binance example, we store eth_address and uid [here](https://github.com/MPCStats/mpc-demo-infra/blob/e73b35aa487b8dc1efd403edddb80f10ebebf681/mpc_demo_infra/coordination_server/database.py#L31)
 - Modify how we extract those data field from proof and make sure it wont repeat what's already in database.
-  Just modify the code [here](https://github.com/ZKStats/mpc-demo-infra/blob/e73b35aa487b8dc1efd403edddb80f10ebebf681/mpc_demo_infra/coordination_server/routes.py#L142-L157)
-- Modify how to process database i.e. creating task for sharing data MPC [here](https://github.com/ZKStats/mpc-demo-infra/blob/e73b35aa487b8dc1efd403edddb80f10ebebf681/mpc_demo_infra/coordination_server/routes.py#L233-L250)
+  Just modify the code [here](https://github.com/MPCStats/mpc-demo-infra/blob/e73b35aa487b8dc1efd403edddb80f10ebebf681/mpc_demo_infra/coordination_server/routes.py#L142-L157)
+- Modify how to process database i.e. creating task for sharing data MPC [here](https://github.com/MPCStats/mpc-demo-infra/blob/e73b35aa487b8dc1efd403edddb80f10ebebf681/mpc_demo_infra/coordination_server/routes.py#L233-L250)
 
 ## 4. Test locally
 

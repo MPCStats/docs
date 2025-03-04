@@ -20,7 +20,7 @@ Follow the steps below on each server before deploying:
 
 1. Clone the `mpc-demo-infra` repository and cd to the repository root:
    ```bash
-   git clone https://github.com/ZKStats/mpc-demo-infra.git
+   git clone https://github.com/MPCStats/mpc-demo-infra.git
    ```
 
 ## `setup_env.sh` Options

@@ -20,7 +20,7 @@ Below instructions assume that the servers will be installed on:
 
 2. Clone the repository and cd to the repository root:
    ```bash
-   git clone https://github.com/ZKStats/mpc-demo-infra.git
+   git clone https://github.com/MPCStats/mpc-demo-infra.git
    cd mpc-demo-infra
    ```
 
@@ -69,7 +69,7 @@ For each party server, perform the following steps:
 
 2. Clone the repository and cd to the repository root:
    ```bash
-   git clone https://github.com/ZKStats/mpc-demo-infra.git
+   git clone https://github.com/MPCStats/mpc-demo-infra.git
    cd mpc-demo-infra
    ```
 
@@ -108,11 +108,11 @@ For each party server, perform the following steps:
 ## 2. Sharing ETH Balance
 1. Install Poetry by following the instructions [here](https://python-poetry.org/docs/#installation).
 
-2. Get the Binance API key and secret, following the instructions in [Get Your Binance API Key](https://github.com/ZKStats/mpc-demo-infra/blob/main/mpc_demo_infra/client_cli/docker/README.md#step-1-get-your-binance-api-key)
+2. Get the Binance API key and secret, following the instructions in [Get Your Binance API Key](https://github.com/MPCStats/mpc-demo-infra/blob/main/mpc_demo_infra/client_cli/docker/README.md#step-1-get-your-binance-api-key)
 
 3. Clone the repository and cd to the repository root:
    ```bash
-   git clone https://github.com/ZKStats/mpc-demo-infra.git
+   git clone https://github.com/MPCStats/mpc-demo-infra.git
    cd mpc-demo-infra
    ```
 

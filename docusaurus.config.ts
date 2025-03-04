@@ -10,15 +10,15 @@ const config: Config = {
   favicon: 'img/favicon.png',
 
   // Set the production url of your site here
-  url: 'https://docs.mpcstats.org/',
+  url: 'https://mpcstats.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/docs/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'ZKStats', // Usually your GitHub org/user name.
-  projectName: 'website', // Usually your repo name.
+  organizationName: 'MPCStats', // Usually your GitHub org/user name.
+  projectName: 'docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -41,7 +41,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/ZKStats/website/tree/main',
+            'https://github.com/MPCStats/docs/tree/main',
         },
         blog: false, // Optional: disable the blog plugin
         // blog: {
@@ -84,7 +84,7 @@ const config: Config = {
         },
         // {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/ZKStats/mpc-demo-infra',
+          href: 'https://github.com/MPCStats/mpc-demo-infra',
           label: 'GitHub',
           position: 'right',
         },
@@ -124,7 +124,7 @@ const config: Config = {
             // },
             {
               label: 'GitHub',
-              href: 'https://github.com/ZKStats/mpc-demo-infra',
+              href: 'https://github.com/MPCStats/mpc-demo-infra',
             },
           ],
         },

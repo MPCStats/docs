@@ -28,7 +28,7 @@ We had a demo at [Devcon 2024](https://www.youtube.com/watch?v=wCp7Zsjou7w) wher
 
 This demo demonstrates how real-world data sources like Binance can be securely integrated into privacy-preserving statistical computations using MPC and TLSNotary. It's a foundational step toward building tools that enable collaborative data analysis while preserving user privacy.
 
-You can explore our [implementation code](https://github.com/ZKStats/mpc-demo-infra) and read our detailed [Devcon Demo Report](https://pse-team.notion.site/MPCStats-Devcon-Demo-Report-3055bb69afd24d60bf8ee8d4fa5f774c) to learn more about the technical details and outcomes of this demonstration. For the rest of the documentation, we'll focus on the components and workflow of the demo.
+You can explore our [implementation code](https://github.com/MPCStats/mpc-demo-infra) and read our detailed [Devcon Demo Report](https://pse-team.notion.site/MPCStats-Devcon-Demo-Report-3055bb69afd24d60bf8ee8d4fa5f774c) to learn more about the technical details and outcomes of this demonstration. For the rest of the documentation, we'll focus on the components and workflow of the demo.
 
 Below is what our stats page looked like:
 

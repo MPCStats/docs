@@ -20,7 +20,7 @@ Note: You can use domain names such as `coord.example.com` instead of IP address
 
 1. Clone the `mpc-demo-infra` repository and cd to the repository root:
    ```bash
-   git clone https://github.com/ZKStats/mpc-demo-infra.git
+   git clone https://github.com/MPCStats/mpc-demo-infra.git
    cd mpc-demo-infra
    ```
 
@@ -45,7 +45,7 @@ Make sure that you are at the repository root before proceeding.
 ## Deploying the Computation Party Servers
 Perform the following steps on each of the three servers running a Computation Party Server instance.
 Make sure that you are at the repository root before proceeding.
- 
+
 1. Change the `PARTY_HOSTS` in `./mpc_demo_infra/computation_party_server/docker/.env.party` to:
    ```bash
    PARTY_HOSTS=["192.168.0.101", "192.168.0.102", "192.168.0.103"]
@@ -55,7 +55,7 @@ Make sure that you are at the repository root before proceeding.
    1. Set `PARTY_WEB_PROTOCOL` to `https`
    1. Rename the private key and certificate files of your domain as `privkey.pem` and `fullchain.pem` respectively and add them to `mpc_demo_infra/computation_party_server/docker/ssl_certs` directory.
 
-   
+
 1. Change the `COORDINATION_SERVER_URL` to:
    ```
    COORDINATION_SERVER_URL=http://192.168.0.100:8005

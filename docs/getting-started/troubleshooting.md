@@ -26,11 +26,11 @@ If you encounter issues:
 1. If you get an error like 'P0.pem' is empty, try running `./Scripts/setup-ssl.sh 3` under `MP-SPDZ` directory at the repository root.
 1. If Notary Server's SSL certificate has expired, you can generate a new one by running the following commands from the repository root:
    ```bash
-   cd tlsn/notary/server/fixture/tls 
+   cd tlsn/notary/server/fixture/tls
    openssl genpkey -algorithm RSA -out notary.key -pkeyopt rsa_keygen_bits:2048 \
      && openssl req -new -key notary.key -out request.csr -subj "/C=US/ST=State/L=City/O=Organization/OU=Department/CN=127.0.0.1" \
      && openssl x509 -req -in request.csr -signkey notary.key -out notary.crt -days 365 -extfile openssl.cnf -extensions v3_req
    ```
 ## Getting Help
-If you encounter any issues during installation, feel free to open an issue in our [GitHub repository](https://github.com/ZKStats/mpc-demo-infra).
+If you encounter any issues during installation, feel free to open an issue in our [GitHub repository](https://github.com/MPCStats/mpc-demo-infra).
 

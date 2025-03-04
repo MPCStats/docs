@@ -26,7 +26,7 @@ This method involves building the client entirely from the source code, offering
 #### Steps
 1. Clone the repository and cd to the repository root:
    ```bash
-   git clone https://github.com/ZKStats/mpc-demo-infra.git
+   git clone https://github.com/MPCStats/mpc-demo-infra.git
    cd mpc-demo-infra
    ```
 
@@ -61,7 +61,7 @@ Note: The binaries are built directly from the source code using public GitHub w
 #### Steps
 1. Download the script to fetch and execute appropriate binary
    ```
-   curl -L -o share-data.sh https://github.com/ZKStats/mpc-demo-infra/releases/latest/download/share-data.sh
+   curl -L -o share-data.sh https://github.com/MPCStats/mpc-demo-infra/releases/latest/download/share-data.sh
    ```
 1. Create `.env.client_cli' in the current directory with the following content:
    ```bash
@@ -81,7 +81,7 @@ Note: The binaries are built directly from the source code using public GitHub w
 ## Execution
 
 ### Sharing ETH Balance
-1. Get the Binance API key and secret, following the instructions in [Get Your Binance API Key](https://github.com/ZKStats/mpc-demo-infra/blob/main/mpc_demo_infra/client_cli/docker/README.md#step-1-get-your-binance-api-key)
+1. Get the Binance API key and secret, following the instructions in [Get Your Binance API Key](https://github.com/MPCStats/mpc-demo-infra/blob/main/mpc_demo_infra/client_cli/docker/README.md#step-1-get-your-binance-api-key)
 
 
 1. Execute `Client CLI`:
@@ -108,7 +108,7 @@ Note: The binaries are built directly from the source code using public GitHub w
 
      1. Execute `Client CLI` via `share-data` script:
         ```bash
-        curl -L -o share-data.sh https://github.com/ZKStats/mpc-demo-infra/releases/latest/download/share-data.sh
+        curl -L -o share-data.sh https://github.com/MPCStats/mpc-demo-infra/releases/latest/download/share-data.sh
         chmod +x share-data.sh
         ./share-data.sh <eth-address> <binance-api-key> <binance-api-secret>
         ```
