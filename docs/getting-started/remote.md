@@ -52,12 +52,18 @@ Below instructions assume that the servers will be installed on:
    ./setup_env.sh --coord --consumer
    ```
 
-5. Start the coordination server:
+5. Activate the virtual environment with Poetry:
+   (This is not necessary if Poetry was already availalbe before running `setup_env.sh`)
+   ```bash
+   source ./venv/bin/activate
+   ```
+
+6. Start the coordination server:
    ```bash
    poetry run coord-run
    ```
 
-6. Start the data consumer API server:
+7. Start the data consumer API server:
    ```bash
    poetry run consumer-api-run
    ```
@@ -90,8 +96,13 @@ For each party server, perform the following steps:
    ./setup_env.sh --party
    ```
 
-5. Start the party server:
-    For party 0, run:
+5. Activate the virtual environment with Poetry:
+   (This is not necessary if Poetry was already availalbe before running `setup_env.sh`)
+   ```bash
+   source ./venv/bin/activate
+   ```
+6. Start the party server:
+   For party 0, run:
    ```bash
    PORT=8006 PARTY_ID=0 poetry run party-run
    ```
