@@ -148,7 +148,13 @@ For each party server, perform the following steps:
      NOTARY_SERVER_HOST=127.0.0.1
      ```
 
-5. Execute `Client CLI`:
+5. Activate the virtual environment with Poetry:
+   (This is not necessary if Poetry was already availalbe before running `setup_env.sh`)
+   ```bash
+   source ./venv/bin/activate
+   ```
+
+6. Execute `Client CLI`:
     ```bash
     poetry run client-share-data <eth-address> <binance-api-key> <binance-api-secret>
     ```
