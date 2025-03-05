@@ -101,6 +101,7 @@ For each party server, perform the following steps:
    ```bash
    source ./venv/bin/activate
    ```
+
 6. Start the party server:
    For party 0, run:
    ```bash
