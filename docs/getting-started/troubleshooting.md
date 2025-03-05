@@ -31,6 +31,8 @@ If you encounter issues:
      && openssl req -new -key notary.key -out request.csr -subj "/C=US/ST=State/L=City/O=Organization/OU=Department/CN=127.0.0.1" \
      && openssl x509 -req -in request.csr -signkey notary.key -out notary.crt -days 365 -extfile openssl.cnf -extensions v3_req
    ```
+1. If you're asked to install `python3.xx-venv` package while running `./setup_env.sh`, remove `venv` directory under the repository root, install the package, and try again. 
+
 ## Getting Help
 If you encounter any issues during installation, feel free to open an issue in our [GitHub repository](https://github.com/MPCStats/mpc-demo-infra).
 
